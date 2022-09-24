@@ -10,10 +10,7 @@ const Home = (): JSX.Element => {
 				<Styled.HomeContentHeader>
 					<div>
 						<h1>World of Darkness</h1>
-						<h2>
-							Welcome to the domain of
-							Kindreds
-						</h2>
+						<h2>Welcome to the domain of Kindreds</h2>
 					</div>
 				</Styled.HomeContentHeader>
 				<Styled.HomeContentCards>

@@ -1,3 +1,5 @@
+import { Skill } from "./types";
+
 export interface CssColors {
 	primaryColor: string;
 	secondaryColor: string;
@@ -35,4 +37,57 @@ export interface MenuItemProps {
 
 export interface MenuItemButtonProps {
 	active?: boolean;
+}
+
+export interface ApiKindred {
+	id: string;
+	kindredId: string;
+	kindredCreation: number;
+	image: string;
+	name: string;
+	player: string;
+	clan: string;
+	generation: number;
+	attributes: string;
+	abilities: string;
+	advantages: string;
+	createdAt: Date;
+	updatedAt: Date;
+}
+
+export interface SkillSectionAttributeResponse {
+	type: string;
+	physical: SkillGroupResponse;
+	social: SkillGroupResponse;
+	mental: SkillGroupResponse;
+}
+
+export interface SkillSectionAbilitiesResponse {
+	type: string;
+	talents: SkillGroupResponse;
+	skills: SkillGroupResponse;
+	knowledges: SkillGroupResponse;
+}
+export interface SkillSectionAdvantagesResponse {
+	type: string;
+	disciplines: SkillGroupResponse;
+	backgrounds: SkillGroupResponse;
+	virtues: SkillGroupResponse;
+}
+
+export interface SkillGroupResponse {
+	dataType: string;
+	type: string;
+	features: Skill[];
+	stand?: number;
+}
+
+export interface Stats {
+	attributes: SkillSectionAttributeResponse;
+	abilities: SkillSectionAbilitiesResponse;
+	advantages: SkillSectionAdvantagesResponse;
+}
+
+export interface SubTypeProp {
+	subType: SkillGroupResponse;
 }

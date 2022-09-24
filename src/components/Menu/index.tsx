@@ -1,10 +1,7 @@
 import * as Styled from "./styles";
 import type { MenuProps } from "../../types/interfaces";
 import { Home, LogOut } from "../../assets/icons";
-import {
-	NavigateFunction,
-	useNavigate,
-} from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 const Menu = ({ path }: MenuProps): JSX.Element => {
 	const navigate: NavigateFunction = useNavigate();
@@ -19,23 +16,15 @@ const Menu = ({ path }: MenuProps): JSX.Element => {
 						<Home />
 					</Styled.MenuItemButton>
 				</Styled.MenuItem>
-				<Styled.MenuItem
-					active={path === "profile"}
-				>
+				<Styled.MenuItem active={path === "profile"}>
 					<Styled.MenuItemButton
-						onClick={(): void =>
-							navigate("/profile")
-						}
+						onClick={(): void => navigate("/profile")}
 						active={path === "profile"}
 					></Styled.MenuItemButton>
 				</Styled.MenuItem>
-				<Styled.MenuItem
-					active={path === "settings"}
-				>
+				<Styled.MenuItem active={path === "settings"}>
 					<Styled.MenuItemButton
-						onClick={(): void =>
-							navigate("/settings")
-						}
+						onClick={(): void => navigate("/settings")}
 						active={path === "settings"}
 					></Styled.MenuItemButton>
 				</Styled.MenuItem>

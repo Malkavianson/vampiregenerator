@@ -1,11 +1,5 @@
-import {
-	MenuItemButtonProps,
-	MenuItemProps,
-} from "../../types/interfaces";
-import styled, {
-	css,
-	Interpolation,
-} from "styled-components";
+import { MenuItemButtonProps, MenuItemProps } from "../../types/interfaces";
+import styled, { css, Interpolation } from "styled-components";
 
 export const MenuContainer = styled.div`
 	width: 15vw;

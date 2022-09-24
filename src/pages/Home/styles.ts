@@ -14,7 +14,7 @@ export const HomeContentContainer = styled.div`
 
 export const HomeContentHeader = styled.header`
 	width: 100%;
-	height: 16vh;
+	height: 20vh;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -38,6 +38,6 @@ export const HomeContentHeader = styled.header`
 `;
 export const HomeContentCards = styled.main`
 	width: 100%;
-	height: calc(100% - 16vh);
+	height: calc(100% - 20vh);
 	overflow-y: auto;
 `;
