@@ -42,7 +42,7 @@ export const SubTypeTBodyRow = styled.tr`
 	flex-direction: row;
 `;
 
-export const SubTypeTBodyCell = styled.tr`
+export const SubTypeTBodyCell = styled.td`
 	margin-bottom: 0.25em;
 	font-size: 1.5em;
 	line-height: 1em;

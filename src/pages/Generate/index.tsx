@@ -2,6 +2,13 @@ import { api } from "../../services";
 import Menu from "../../components/Menu";
 import { GenerateContainer, GenerateContentCards, GenerateContentContainer, GenerateContentHeader } from "./styles";
 
+export interface AxiosKindredData {
+	name?: string;
+	player?: string;
+	clan?: string;
+	generation?: number;
+}
+
 const Generate = (): JSX.Element => {
 	return (
 		<GenerateContainer>
@@ -21,25 +28,34 @@ const Generate = (): JSX.Element => {
 								const inputs = document.querySelectorAll("input");
 								const select = document.querySelectorAll("select");
 
-								const isUndefined = (value: string): string | undefined => {
-									if ((value = "")) {
-										return undefined;
+								const isUndefined = (value: string): string | boolean => {
+									if (value === "") {
+										return false;
 									} else {
-										return value;
+										return true;
 									}
 								};
 
-								const data = {
-									name: isUndefined(inputs[0].value),
-									player: isUndefined(inputs[1].value),
-									clan: isUndefined(select[0].value),
-									generation: inputs[2].value,
-								};
+								const data: AxiosKindredData = {};
+
+								if (isUndefined(inputs[0].value)) {
+									data.name = inputs[0].value;
+								}
+								if (isUndefined(inputs[1].value)) {
+									data.player = inputs[1].value;
+								}
+								if (isUndefined(select[0].value)) {
+									data.clan = select[0].value;
+								}
+								if (isUndefined(inputs[2].value)) {
+									data.generation = Number(inputs[2].value);
+								}
 
 								console.log(data);
 
 								api.post("/kindred", data).then(res => {
-									console.log(res);
+									console.log(res.data);
+									console.log(res.status);
 								});
 
 								e.preventDefault();
