@@ -1,19 +1,19 @@
 import Menu from "../../components/Menu";
-import * as Styled from "./styles";
+import { ProfileContainer, ProfileContentContainer, ProfileContentHeader } from "./styles";
 
 const Profile = (): JSX.Element => {
 	return (
-		<Styled.ProfileContainer>
+		<ProfileContainer>
 			<Menu path="profile" />
-			<Styled.ProfileContentContainer>
-				<Styled.ProfileContentHeader>
+			<ProfileContentContainer>
+				<ProfileContentHeader>
 					<div>
 						<h1>🧛 Favorites 🧛‍♀️</h1>
 						<h2>💻✍️ under building 💡⏳ </h2>
 					</div>
-				</Styled.ProfileContentHeader>
-			</Styled.ProfileContentContainer>
-		</Styled.ProfileContainer>
+				</ProfileContentHeader>
+			</ProfileContentContainer>
+		</ProfileContainer>
 	);
 };
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services";
 import Kindred from "../kindred";
-import * as Styled from "./styles";
+import { KindredsPool, LoadingTitle } from "./styles";
 
 const Kindreds = (): JSX.Element => {
 	const [status, getStatus] = useState(false);
@@ -32,16 +32,19 @@ const Kindreds = (): JSX.Element => {
 
 	return (
 		<>
-			<Styled.KindredsPool>
-				{kindreds.map((e, i) => {
-					return (
-						<Kindred
-							kindred={e}
-							key={i}
-						/>
-					);
-				})}
-			</Styled.KindredsPool>
+			{Boolean(!status) && <LoadingTitle>Please wait, loading content...</LoadingTitle>}
+			{Boolean(status) && (
+				<KindredsPool>
+					{kindreds.map((e, i) => {
+						return (
+							<Kindred
+								kindred={e}
+								key={i}
+							/>
+						);
+					})}
+				</KindredsPool>
+			)}
 		</>
 	);
 };

@@ -1,40 +1,50 @@
-import * as Styled from "./styles";
 import type { MenuProps } from "../../types/interfaces";
-import { Home, LogOut } from "../../assets/icons";
+import { Bite, Home, LogOut, Settings } from "../../assets/icons";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import { MenuContainer, MenuItem, MenuItemButton } from "./styles";
 
 const Menu = ({ path }: MenuProps): JSX.Element => {
 	const navigate: NavigateFunction = useNavigate();
 	return (
-		<Styled.MenuContainer>
+		<MenuContainer>
 			<nav>
-				<Styled.MenuItem active={path === "home"}>
-					<Styled.MenuItemButton
+				<MenuItem active={path === "home"}>
+					<MenuItemButton
 						onClick={(): void => navigate("/")}
 						active={path === "home"}
 					>
 						<Home />
-					</Styled.MenuItemButton>
-				</Styled.MenuItem>
-				<Styled.MenuItem active={path === "profile"}>
-					<Styled.MenuItemButton
+					</MenuItemButton>
+				</MenuItem>
+				<MenuItem active={path === "generate"}>
+					<MenuItemButton
+						onClick={(): void => navigate("/generate")}
+						active={path === "generate"}
+					>
+						<Bite />
+					</MenuItemButton>
+				</MenuItem>
+				<MenuItem active={path === "profile"}>
+					<MenuItemButton
 						onClick={(): void => navigate("/profile")}
 						active={path === "profile"}
-					></Styled.MenuItemButton>
-				</Styled.MenuItem>
-				<Styled.MenuItem active={path === "settings"}>
-					<Styled.MenuItemButton
+					></MenuItemButton>
+				</MenuItem>
+				<MenuItem active={path === "settings"}>
+					<MenuItemButton
 						onClick={(): void => navigate("/settings")}
 						active={path === "settings"}
-					></Styled.MenuItemButton>
-				</Styled.MenuItem>
+					>
+						<Settings />
+					</MenuItemButton>
+				</MenuItem>
 			</nav>
-			<Styled.MenuItem logout>
-				<Styled.MenuItemButton>
+			<MenuItem logout>
+				<MenuItemButton>
 					<LogOut />
-				</Styled.MenuItemButton>
-			</Styled.MenuItem>
-		</Styled.MenuContainer>
+				</MenuItemButton>
+			</MenuItem>
+		</MenuContainer>
 	);
 };
 

@@ -1,19 +1,19 @@
 import Menu from "../../components/Menu";
-import * as Styled from "./styles";
+import { SettingsContainer, SettingsContentContainer, SettingsContentHeader } from "./styles";
 
 const Settings = (): JSX.Element => {
 	return (
-		<Styled.SettingsContainer>
+		<SettingsContainer>
 			<Menu path="settings" />
-			<Styled.SettingsContentContainer>
-				<Styled.SettingsContentHeader>
+			<SettingsContentContainer>
+				<SettingsContentHeader>
 					<div>
 						<h1>🛠 Settings ⚙️</h1>
 						<h2>💻✍️ under building 💡⏳ </h2>
 					</div>
-				</Styled.SettingsContentHeader>
-			</Styled.SettingsContentContainer>
-		</Styled.SettingsContainer>
+				</SettingsContentHeader>
+			</SettingsContentContainer>
+		</SettingsContainer>
 	);
 };
 

@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const LoadingTitle = styled.h1`
+	text-align: center;
+	margin-top: 10rem;
+`;
+
 export const KindredsPool = styled.div`
 	width: 100%;
 	height: auto;
