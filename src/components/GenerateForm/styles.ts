@@ -60,9 +60,11 @@ export const GenerateContentCardsForm = styled.section`
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
+	overflow-x: hidden;
 
 	form {
 		height: 30em;
+		max-width: 600px;
 		display: flex;
 		align-items: center;
 		font-size: 5em;
@@ -121,6 +123,12 @@ export const Public = styled.div`
 	max-height: 90px;
 	width: 100%;
 	display: flex;
+	margin-bottom: 2em;
+	transition: 0.84s;
+
+	&:hover {
+		transform: scale(0.95);
+	}
 
 	svg {
 		position: absolute;
@@ -128,8 +136,12 @@ export const Public = styled.div`
 		width: 100%;
 	}
 
-	svg:hover > path#background {
-		fill: #000;
+	&:hover > svg > path#background {
+		fill: #f55;
+	}
+
+	&:hover > svg > path#center {
+		fill: #ac82e8;
 	}
 `;
 
