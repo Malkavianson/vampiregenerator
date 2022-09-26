@@ -7,37 +7,3 @@ export const GenerateContainer = styled.div`
 	background: #282a36;
 	color: #f8f8f2;
 `;
-
-export const GenerateContentContainer = styled.div`
-	width: calc(100% - 15rem);
-`;
-
-export const GenerateContentHeader = styled.header`
-	width: 100%;
-	height: 20vh;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 2rem;
-	box-sizing: border-box;
-
-	div {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-evenly;
-		h1 {
-			font-size: 7rem;
-		}
-		h2 {
-			font-size: 4rem;
-		}
-	}
-`;
-export const GenerateContentCards = styled.main`
-	width: 100%;
-	height: calc(100% - 20vh);
-	overflow-y: auto;
-`;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services";
-import Kindred from "../kindred";
+import Kindred from "../Kindred";
 import { KindredsPool, LoadingTitle } from "./styles";
 
 const Kindreds = (): JSX.Element => {

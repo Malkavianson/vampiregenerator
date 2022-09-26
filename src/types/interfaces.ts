@@ -51,8 +51,8 @@ export interface ApiKindred {
 	attributes: string;
 	abilities: string;
 	advantages: string;
-	createdAt: Date;
-	updatedAt: Date;
+	createdAt?: Date;
+	updatedAt?: Date;
 }
 
 export interface SkillSectionAttributeResponse {
@@ -90,4 +90,11 @@ export interface Stats {
 
 export interface SubTypeProp {
 	subType: SkillGroupResponse;
+}
+
+export interface AxiosKindredData {
+	name?: string;
+	player?: string;
+	clan?: string;
+	generation?: number;
 }
