@@ -7,7 +7,6 @@ interface PropKindred {
 }
 
 const Kindred = ({ kindred }: PropKindred): JSX.Element => {
-	console.log(kindred);
 	switch (kindred) {
 		case undefined:
 			return <></>;
