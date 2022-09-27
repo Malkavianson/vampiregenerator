@@ -25,7 +25,7 @@ const Router = (): JSX.Element => {
 				element={<Generate />}
 			/>
 			<Route
-				path="/"
+				path="/login"
 				element={<Login />}
 			/>
 		</Routes>
