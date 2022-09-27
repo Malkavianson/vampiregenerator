@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom";
 
 const Router = (): JSX.Element => {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const [teste, setTeste] = useState(false);
+	const [teste, setTeste] = useState(true);
 
 	switch (teste) {
 		case true:
