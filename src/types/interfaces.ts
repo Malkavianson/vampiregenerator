@@ -27,7 +27,7 @@ export interface CssConstants {
 }
 
 export interface MenuProps {
-	path: "home" | "settings" | "profile" | "generate";
+	path: "home" | "settings" | "profile" | "generate" | "login";
 }
 
 export interface MenuItemProps {

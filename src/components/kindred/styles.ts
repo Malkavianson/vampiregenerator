@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 export const KindredSheet = styled.article`
 	width: 95%;
+	height: auto;
 	max-width: 80em;
-	aspect-ratio: 0.75;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: 2rem;
 	background: white;
+	padding-bottom: 1em;
 
 	h1 {
 		line-height: 1em;
@@ -23,6 +24,7 @@ export const KindredHeader = styled.header`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+
 	div {
 		width: 50%;
 		display: flex;

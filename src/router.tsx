@@ -1,4 +1,5 @@
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import Generate from "./pages/Generate";
@@ -22,6 +23,10 @@ const Router = (): JSX.Element => {
 			<Route
 				path="/generate"
 				element={<Generate />}
+			/>
+			<Route
+				path="/login"
+				element={<Login />}
 			/>
 		</Routes>
 	);
