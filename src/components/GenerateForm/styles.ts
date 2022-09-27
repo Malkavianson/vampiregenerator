@@ -127,7 +127,7 @@ export const Public = styled.div`
 	transition: 0.84s;
 
 	&:hover {
-		transform: scale(0.95);
+		transform: scale(0.99);
 	}
 
 	svg {

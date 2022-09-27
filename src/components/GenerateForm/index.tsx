@@ -67,151 +67,153 @@ const Form = (): JSX.Element => {
 			</GenerateContentHeader>
 			<GenerateContentCards>
 				<GenerateContentCardsForm>
-					<form
-						name="register"
-						onSubmit={(e): void => {
-							submitKindred();
-							e.preventDefault();
-							e.stopPropagation();
-						}}
-					>
-						<fieldset>
-							<legend>Fill kindred informations</legend>
-							<Homies>
-								<Values>
-									<label htmlFor="name">Name</label>
-									<input
-										type="text"
-										placeholder="Kindred's Name"
-										name="name"
-										id="name"
-										title="Choose the Kindred's name"
-									/>
-								</Values>
-								<Values>
-									<label htmlFor="player">Player</label>
-									<input
-										type="text"
-										placeholder="Your Name"
-										name="player"
-										id="player"
-										title="Insert your name if you want"
-									/>
-								</Values>
-								<Values>
-									<label htmlFor="clan">Clan</label>
-									<select
-										name="clan"
-										id="clan"
-									>
-										<option
-											id="clan-0"
-											defaultValue={undefined}
-										></option>
-										<option
-											value="Brujah"
-											id="clan-1"
+					{Boolean(status !== 201) && (
+						<form
+							name="register"
+							onSubmit={(e): void => {
+								submitKindred();
+								e.preventDefault();
+								e.stopPropagation();
+							}}
+						>
+							<fieldset>
+								<legend>Fill kindred informations</legend>
+								<Homies>
+									<Values>
+										<label htmlFor="name">Name</label>
+										<input
+											type="text"
+											placeholder="Kindred's Name"
+											name="name"
+											id="name"
+											title="Choose the Kindred's name"
+										/>
+									</Values>
+									<Values>
+										<label htmlFor="player">Player</label>
+										<input
+											type="text"
+											placeholder="Your Name"
+											name="player"
+											id="player"
+											title="Insert your name if you want"
+										/>
+									</Values>
+									<Values>
+										<label htmlFor="clan">Clan</label>
+										<select
+											name="clan"
+											id="clan"
 										>
-											Brujah
-										</option>
-										<option
-											value="Gangrel"
-											id="clan-2"
-										>
-											Gangrel
-										</option>
-										<option
-											value="Nosferatu"
-											id="clan-3"
-										>
-											Nosferatu
-										</option>
-										<option
-											value="Malkavian"
-											id="clan-4"
-										>
-											Malkavian
-										</option>
-										<option
-											value="Toreador"
-											id="clan-5"
-										>
-											Toreador
-										</option>
-										<option
-											value="Tremere"
-											id="clan-6"
-										>
-											Tremere
-										</option>
-										<option
-											value="Ventrue"
-											id="clan-7"
-										>
-											Ventrue
-										</option>
-										<option
-											value="LaSombra"
-											id="clan-8"
-										>
-											LaSombra
-										</option>
-										<option
-											value="Tzimisce"
-											id="clan-9"
-										>
-											Tzimisce
-										</option>
-										<option
-											value="Assamite"
-											id="clan-10"
-										>
-											Assamite
-										</option>
-										<option
-											value="Followers of Set"
-											id="clan-11"
-										>
-											Followers of Set
-										</option>
-										<option
-											value="Giovanni"
-											id="clan-12"
-										>
-											Giovanni
-										</option>
-										<option
-											value="Ravnos"
-											id="clan-13"
-										>
-											Ravnos
-										</option>
-									</select>
-								</Values>
-								<Values>
-									<label htmlFor="generation">Generation</label>
-									<input
-										type="number"
-										placeholder="13"
-										name="generation"
-										id="generation"
-										defaultValue={13}
-										step={1}
-										max={13}
-										min={6}
-										title="Select Kindred's generation"
-									/>
-								</Values>
-							</Homies>
-							{Boolean(status === 0) && (
-								<Public>
-									<ButtonGenerate />
-									<PublicButton type="submit">Generate</PublicButton>
-								</Public>
-							)}
-							{Boolean(status !== 0) && <Loader />}
-						</fieldset>
-					</form>
+											<option
+												id="clan-0"
+												defaultValue={undefined}
+											></option>
+											<option
+												value="Brujah"
+												id="clan-1"
+											>
+												Brujah
+											</option>
+											<option
+												value="Gangrel"
+												id="clan-2"
+											>
+												Gangrel
+											</option>
+											<option
+												value="Nosferatu"
+												id="clan-3"
+											>
+												Nosferatu
+											</option>
+											<option
+												value="Malkavian"
+												id="clan-4"
+											>
+												Malkavian
+											</option>
+											<option
+												value="Toreador"
+												id="clan-5"
+											>
+												Toreador
+											</option>
+											<option
+												value="Tremere"
+												id="clan-6"
+											>
+												Tremere
+											</option>
+											<option
+												value="Ventrue"
+												id="clan-7"
+											>
+												Ventrue
+											</option>
+											<option
+												value="LaSombra"
+												id="clan-8"
+											>
+												LaSombra
+											</option>
+											<option
+												value="Tzimisce"
+												id="clan-9"
+											>
+												Tzimisce
+											</option>
+											<option
+												value="Assamite"
+												id="clan-10"
+											>
+												Assamite
+											</option>
+											<option
+												value="Followers of Set"
+												id="clan-11"
+											>
+												Followers of Set
+											</option>
+											<option
+												value="Giovanni"
+												id="clan-12"
+											>
+												Giovanni
+											</option>
+											<option
+												value="Ravnos"
+												id="clan-13"
+											>
+												Ravnos
+											</option>
+										</select>
+									</Values>
+									<Values>
+										<label htmlFor="generation">Generation</label>
+										<input
+											type="number"
+											placeholder="13"
+											name="generation"
+											id="generation"
+											defaultValue={13}
+											step={1}
+											max={13}
+											min={6}
+											title="Select Kindred's generation"
+										/>
+									</Values>
+								</Homies>
+								{Boolean(status === 0) && (
+									<Public>
+										<ButtonGenerate />
+										<PublicButton type="submit">Generate</PublicButton>
+									</Public>
+								)}
+								{Boolean(status !== 0) && <Loader />}
+							</fieldset>
+						</form>
+					)}
 					<NewKindred>
 						{Boolean(status === 201) && (
 							<>
@@ -227,6 +229,7 @@ const Form = (): JSX.Element => {
 										Try again
 									</PublicButton>
 								</Public>
+								{Boolean(status !== 0) && <Loader />}
 							</>
 						)}
 					</NewKindred>
