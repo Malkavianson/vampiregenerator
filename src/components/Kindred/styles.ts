@@ -1,15 +1,71 @@
 import styled from "styled-components";
 
-export const KindredSheet = styled.article`
+export const FaceFramer = styled.div`
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.84s;
+
+	div {
+		svg {
+			opacity: 0;
+		}
+	}
+`;
+
+export const KindredArea = styled.section`
+	position: relative;
 	width: 95%;
 	height: auto;
 	max-width: 80em;
+
+	&:hover > ${FaceFramer} {
+		background: #00000022;
+		z-index: 1;
+
+		div {
+			width: 30%;
+			max-height: 50%;
+			svg {
+				opacity: 1;
+				z-index: 1;
+				cursor: pointer;
+
+				path {
+					fill: #00000022;
+				}
+			}
+
+			svg:hover {
+				path {
+					fill: #bbbbbb77;
+				}
+			}
+
+			svg:active {
+				path {
+					stroke: #ffffff77;
+				}
+			}
+		}
+	}
+`;
+
+export const KindredSheet = styled.article`
+	width: 100%;
+	height: auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: 2rem;
 	background: white;
 	padding-bottom: 1em;
+	user-select: none;
 
 	h1 {
 		line-height: 1em;
