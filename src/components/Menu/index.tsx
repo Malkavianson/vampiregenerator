@@ -2,6 +2,7 @@ import type { MenuProps } from "../../types/interfaces";
 import { Bite, Home, LogOut, Settings } from "../../assets/icons";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { MenuContainer, MenuItem, MenuItemButton } from "./styles";
+import { Link } from "react-router-dom";
 
 const Menu = ({ path }: MenuProps): JSX.Element => {
 	const navigate: NavigateFunction = useNavigate();
@@ -40,9 +41,11 @@ const Menu = ({ path }: MenuProps): JSX.Element => {
 				</MenuItem>
 			</nav>
 			<MenuItem logout>
-				<MenuItemButton>
-					<LogOut />
-				</MenuItemButton>
+				<Link to="/login">
+					<MenuItemButton>
+						<LogOut />
+					</MenuItemButton>
+				</Link>
 			</MenuItem>
 		</MenuContainer>
 	);

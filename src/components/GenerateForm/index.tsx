@@ -1,24 +1,11 @@
-import type { ApiKindred, AxiosKindredData } from "../../types/interfaces";
+import type { AxiosKindredData } from "../../types/interfaces";
+import blankKindred from "../../utils/blanKindred";
 import { GenerateContentCards, GenerateContentCardsForm, GenerateContentContainer, GenerateContentHeader, Homies, NewKindred, Public, PublicButton, Values } from "./styles";
 import { ButtonGenerate } from "../../assets/icons";
 import { api } from "../../services";
 import { useState } from "react";
 import Kindred from "../Kindred";
 import Loader from "../Loader";
-
-const blankKindred: ApiKindred = {
-	id: "",
-	kindredId: "",
-	kindredCreation: 0,
-	image: "",
-	name: "",
-	player: "",
-	clan: "",
-	generation: 13,
-	attributes: "",
-	abilities: "",
-	advantages: "",
-};
 
 const Form = (): JSX.Element => {
 	const [status, setStatus] = useState(0);
@@ -226,7 +213,7 @@ const Form = (): JSX.Element => {
 											setStatus(0);
 										}}
 									>
-										Try again
+										New kindred
 									</PublicButton>
 								</Public>
 								{Boolean(status !== 0) && <Loader />}

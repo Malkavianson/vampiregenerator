@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Register = (): JSX.Element => {
 	return (
 		<form
@@ -31,7 +33,9 @@ const Register = (): JSX.Element => {
 				</div>
 			</div>
 
-			<button>Register</button>
+			<Link to="/">
+				<button>Register</button>
+			</Link>
 		</form>
 	);
 };

@@ -9,7 +9,7 @@ export const Brujah = (): JSX.Element => (
 			id="Brujah"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 398.00,145.00
            C 398.00,145.00 407.58,130.00 407.58,130.00
              407.58,130.00 425.58,100.00 425.58,100.00
@@ -424,7 +424,7 @@ export const Gangrel = (): JSX.Element => (
 			id="Gangrel"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 221.00,1.00
            C 229.77,1.93 252.26,14.38 261.00,19.00
              262.90,12.18 257.96,14.09 254.00,7.00
@@ -663,7 +663,7 @@ export const Malkavian = (): JSX.Element => (
 			id="Malkavian"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 267.00,10.00
            C 267.00,10.00 263.04,33.00 263.04,33.00
              262.92,36.04 263.12,39.06 263.93,42.00
@@ -879,7 +879,7 @@ export const Nosferatu = (): JSX.Element => (
 			id="Nosferatu"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 150.00,0.00
            C 176.81,1.23 212.84,12.00 234.00,28.67
              252.31,43.09 279.62,77.92 303.00,96.33
@@ -1072,7 +1072,7 @@ export const Toreador = (): JSX.Element => (
 			id="Toreador"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 440.00,67.00
            C 448.01,48.41 461.75,30.23 476.00,16.00
              479.64,12.37 490.22,2.08 495.00,1.06
@@ -1304,7 +1304,7 @@ export const Tremere = (): JSX.Element => (
 			id="Tremere"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 244.00,1.04
            C 244.00,1.04 257.00,1.04 257.00,1.04
              257.00,1.04 269.00,2.00 269.00,2.00
@@ -1406,7 +1406,7 @@ export const Ventrue = (): JSX.Element => (
 			id="Ventrue"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 404.00,0.00
            C 411.15,3.08 417.93,7.07 423.96,12.01
              432.04,18.63 429.80,20.08 440.81,24.00
@@ -1547,7 +1547,7 @@ export const LaSombra = (): JSX.Element => (
 			id="LaSombra"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 269.01,0.00
            C 269.01,0.00 286.00,1.00 286.00,1.00
              286.00,6.66 284.79,19.50 288.65,23.57
@@ -1731,7 +1731,7 @@ export const Tzimisce = (): JSX.Element => (
 			id="Tzimisce"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 1269.00,48.00
            C 1271.97,52.38 1274.51,64.40 1275.87,70.00
              1281.72,94.10 1281.35,117.38 1267.94,139.00
@@ -2123,7 +2123,7 @@ export const Assamite = (): JSX.Element => (
 			id="Assamite"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 649.00,2.00
            C 651.60,7.65 651.07,14.85 651.00,21.00
              650.82,36.41 640.96,56.28 632.66,69.00
@@ -2458,7 +2458,7 @@ export const FollowersOfSet = (): JSX.Element => (
 			id="Followers_of_Set"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 271.00,406.00
            C 269.50,400.73 270.06,395.43 270.00,390.00
              270.00,390.00 269.00,377.00 269.00,377.00
@@ -2624,7 +2624,7 @@ export const Giovanni = (): JSX.Element => (
 			id="Giovanni"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 503.00,498.00
            C 503.00,498.00 482.00,499.00 482.00,499.00
              482.00,499.00 324.00,499.00 324.00,499.00
@@ -3916,7 +3916,7 @@ export const Ravnos = (): JSX.Element => (
 			id="Ravnos"
 			fill="#000"
 			stroke="black"
-			stroke-width="1"
+			strokeWidth="1"
 			d="M 164.00,85.00
            C 164.00,85.00 191.99,57.00 191.99,57.00
              191.99,57.00 201.04,47.00 201.04,47.00

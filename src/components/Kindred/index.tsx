@@ -1,9 +1,11 @@
 import { FaceFramer, KindredArea, KindredHeader, KindredMain, KindredSheet, TypeTable, TypeTBody, TypeTBodyCell, TypeTBodyRow, TypeTHead, TypeTHeadCell, TypeTHeadRow } from "./styles";
+import blankKindred from "../../utils/blanKindred";
 import type { ApiKindred } from "../../types/interfaces";
+import loader from "../../assets/icons/loader.png";
 import { Download } from "../../assets/icons";
+import { useRef, useState } from "react";
 import SubType from "../SubType/Index";
 import html2canvas from "html2canvas";
-import { useRef } from "react";
 import { jsPDF } from "jspdf";
 
 interface PropKindred {
@@ -12,6 +14,7 @@ interface PropKindred {
 
 const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 	const printRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+	const [toDownload, setToDownload] = useState(false);
 
 	const handleDownloadPdf = async (): Promise<void> => {
 		const pdf = new jsPDF({
@@ -20,6 +23,7 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 			format: "a4",
 			putOnlyUsedFonts: true,
 		});
+
 		const element = printRef.current;
 		const canvas = await html2canvas(element, { allowTaint: true, useCORS: true });
 
@@ -29,26 +33,15 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 
 		const pdfWidth = pdf.internal.pageSize.getWidth();
 		const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+		const pdfName = `${kindred.name}_${kindred.kindredId}_https://vtmgenerator.vercel.app/_by:MalkavianSon`;
 
 		pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
 
-		console.log("passou");
-
-		const pdfName = `${kindred.name}_${kindred.kindredId}`;
-
-		console.log(`pdfName = ${pdfName}.pdf`);
-
-		// pdf.output("dataurlnewwindow", { filename: pdfName });
-
 		pdf.save(`${pdfName}.pdf`);
-
-		console.log("terminou");
-
-		console.log(element);
 	};
 
 	switch (kindred) {
-		case undefined:
+		case blankKindred:
 			return <></>;
 
 		default:
@@ -154,13 +147,30 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 						</KindredMain>
 					</KindredSheet>
 					<FaceFramer>
-						<div
-							onClick={(): void => {
-								handleDownloadPdf();
-							}}
-						>
-							<Download />
-						</div>
+						{!toDownload && (
+							<div
+								onClick={(e): void => {
+									setToDownload(!toDownload);
+									handleDownloadPdf();
+									e.stopPropagation();
+								}}
+							>
+								<Download />
+							</div>
+						)}
+						{toDownload && (
+							<div>
+								<>
+									{setTimeout(() => {
+										setToDownload(!toDownload);
+									}, 5000)}
+									<img
+										src={loader}
+										alt="Loader"
+									/>
+								</>
+							</div>
+						)}
 					</FaceFramer>
 				</KindredArea>
 			);

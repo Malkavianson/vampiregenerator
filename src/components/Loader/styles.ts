@@ -19,7 +19,6 @@ export const KindredRoullete = styled.div`
 
 	svg:hover {
 		path {
-			stroke-width: 2;
 			animation: ${twink} 0.84s cubic-bezier(0.5, -0.3, 0.3, 1.5) alternate infinite;
 		}
 	}
