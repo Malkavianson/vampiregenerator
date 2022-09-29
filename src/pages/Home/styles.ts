@@ -36,8 +36,57 @@ export const HomeContentHeader = styled.header`
 		}
 	}
 `;
+
+export const PageSelectors = styled.div`
+	height: 10em;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 2.5em;
+`;
+export const OrderBySelector = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+
+	div {
+		div {
+			input {
+				filter: hue-rotate(145deg);
+			}
+		}
+	}
+`;
+export const OrderDirectionSelector = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+
+	div {
+		div {
+			input {
+				filter: hue-rotate(145deg);
+			}
+		}
+	}
+`;
+export const CategorySelector = styled.div`
+	div {
+		select {
+			font-family: "Modern Antiqua", cursive;
+
+			option {
+				font-family: "Modern Antiqua", cursive;
+			}
+		}
+	}
+`;
+
 export const HomeContentCards = styled.main`
 	width: 100%;
-	height: calc(100% - 20vh);
+	height: calc(100% - calc(20vh + 25em));
 	overflow-y: auto;
 `;
