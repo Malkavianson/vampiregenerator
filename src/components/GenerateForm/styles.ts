@@ -94,24 +94,18 @@ export const Values = styled.div`
 		margin-bottom: 0.5em;
 	}
 
-	input {
-		height: 3em;
-		margin-bottom: 2em;
-		border: none;
-		border-radius: 0.5em;
-		padding-left: 1em;
-	}
-
 	select {
 		height: 9rem;
 		margin-bottom: 2em;
 		border: none;
 		border-radius: 0.3em;
 		padding-left: 1.2em;
+		font-family: "Modern Antiqua", cursive;
 
 		option {
 			height: 25px;
 			font-size: 16px;
+			font-family: "Modern Antiqua", cursive;
 		}
 	}
 `;

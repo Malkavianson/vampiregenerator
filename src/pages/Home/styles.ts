@@ -75,6 +75,9 @@ export const OrderDirectionSelector = styled.div`
 `;
 export const CategorySelector = styled.div`
 	div {
+		display: flex;
+		flex-direction: column;
+
 		select {
 			font-family: "Modern Antiqua", cursive;
 

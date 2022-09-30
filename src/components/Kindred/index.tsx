@@ -53,6 +53,7 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 
 			return (
 				<KindredArea>
+					<div></div>
 					<KindredSheet ref={printRef}>
 						<h1>Vampire the Masquerade</h1>
 						<KindredHeader>

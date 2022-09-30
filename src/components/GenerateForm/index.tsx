@@ -6,36 +6,33 @@ import { api } from "../../services";
 import { useState } from "react";
 import Kindred from "../Kindred";
 import Loader from "../Loader";
+import Input from "../Input";
 
 const Form = (): JSX.Element => {
 	const [status, setStatus] = useState(0);
 	const [resKindred, setResKindred] = useState(blankKindred);
+
+	const [valueName, setValueName] = useState("");
+	const [valuePlayer, setValuePlayer] = useState("");
+	const [valueGeneration, setValueGeneration] = useState("13");
+
 	const submitKindred = (): void => {
 		setStatus(1);
-		const inputs = document.querySelectorAll("input");
 		const select = document.querySelectorAll("select");
-
-		const isUndefined = (value: string): string | boolean => {
-			if (value === "") {
-				return false;
-			} else {
-				return true;
-			}
-		};
 
 		const data: AxiosKindredData = {};
 
-		if (isUndefined(inputs[0].value)) {
-			data.name = inputs[0].value;
+		if (valueName !== "") {
+			data.name = valueName;
 		}
-		if (isUndefined(inputs[1].value)) {
-			data.player = inputs[1].value;
+		if (valuePlayer) {
+			data.player = valuePlayer;
 		}
-		if (isUndefined(select[0].value)) {
+		if (select[0].value !== "") {
 			data.clan = select[0].value;
 		}
-		if (isUndefined(inputs[2].value)) {
-			data.generation = Number(inputs[2].value);
+		if (valueGeneration) {
+			data.generation = Number(valueGeneration);
 		}
 
 		api.post("/kindred", data).then(res => {
@@ -66,26 +63,16 @@ const Form = (): JSX.Element => {
 							<fieldset>
 								<legend>Fill kindred informations</legend>
 								<Homies>
-									<Values>
-										<label htmlFor="name">Name</label>
-										<input
-											type="text"
-											placeholder="Kindred's Name"
-											name="name"
-											id="name"
-											title="Choose the Kindred's name"
-										/>
-									</Values>
-									<Values>
-										<label htmlFor="player">Player</label>
-										<input
-											type="text"
-											placeholder="Your Name"
-											name="player"
-											id="player"
-											title="Insert your name if you want"
-										/>
-									</Values>
+									<Input
+										label="name"
+										type="text"
+										value={setValueName}
+									/>
+									<Input
+										label="player"
+										type="text"
+										value={setValuePlayer}
+									/>
 									<Values>
 										<label htmlFor="clan">Clan</label>
 										<select
@@ -176,20 +163,14 @@ const Form = (): JSX.Element => {
 											</option>
 										</select>
 									</Values>
-									<Values>
-										<label htmlFor="generation">Generation</label>
-										<input
-											type="number"
-											placeholder="13"
-											name="generation"
-											id="generation"
-											defaultValue={13}
-											step={1}
-											max={13}
-											min={6}
-											title="Select Kindred's generation"
-										/>
-									</Values>
+									<Input
+										label="generation"
+										type="number"
+										value={setValueGeneration}
+										step={1}
+										max={13}
+										min={6}
+									/>
 								</Homies>
 								{Boolean(status === 0) && (
 									<Public>
@@ -211,6 +192,9 @@ const Form = (): JSX.Element => {
 										onClick={(e): void => {
 											e.stopPropagation;
 											setStatus(0);
+											setValueName("");
+											setValuePlayer("");
+											setValueGeneration("13");
 										}}
 									>
 										New kindred

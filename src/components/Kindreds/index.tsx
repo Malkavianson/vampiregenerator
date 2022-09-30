@@ -7,34 +7,30 @@ interface PropsType {
 	orderBy: string;
 	orderDirection: string;
 	category: string;
+	// numberPerPages: number;
 }
-const Kindreds = ({ orderBy, orderDirection, category }: PropsType): JSX.Element => {
+const Kindreds = ({ orderBy, orderDirection, category /*, numberPerPages*/ }: PropsType): JSX.Element => {
 	const [status, getStatus] = useState(false);
 	const [kindreds, setKindreds] = useState([blankKindred]);
 	const [kindredsBK, setKindredsBK] = useState([blankKindred]);
 
 	const handleGetKindreds = (): void => {
-		console.log(Date.now());
 		if (status) {
 			api.get("/kindred").then(res => {
 				setKindreds(res.data);
 				setKindredsBK(res.data);
-				console.log(Date.now());
 			});
 		}
 	};
 	const handleGetServerStatus = (): void => {
-		console.log(`handleGetServerStatus is starting in ${status}`);
 		api.get("/status").then(res => {
 			if (res.status === 200) {
 				getStatus(true);
 			}
 		});
-		console.log(`handleGetServerStatus is getting ${status}`);
 	};
 
 	const toggleCategory = (): void => {
-		console.log(category);
 		switch (category) {
 			case "":
 				setKindreds(kindredsBK);
@@ -46,7 +42,6 @@ const Kindreds = ({ orderBy, orderDirection, category }: PropsType): JSX.Element
 				break;
 		}
 	};
-
 	const toggleOrderBy = (): void => {
 		const uni = [...kindreds];
 
@@ -109,10 +104,16 @@ const Kindreds = ({ orderBy, orderDirection, category }: PropsType): JSX.Element
 		setKindreds(uni);
 	};
 
+	// const splitPool = (): void => {
+	// 	let part = [];
+	// 	for(let i = 0; i < numberPerPages ; i++ ){
+
+	// 	}
+	// }
+
 	useEffect(() => {
 		toggleOrderBy();
 	}, [orderBy, orderDirection]);
-
 	useEffect(() => {
 		toggleCategory();
 	}, [category]);
@@ -120,7 +121,6 @@ const Kindreds = ({ orderBy, orderDirection, category }: PropsType): JSX.Element
 	useEffect(() => {
 		handleGetKindreds();
 	}, [status]);
-
 	useEffect(() => {
 		handleGetServerStatus();
 	}, []);
