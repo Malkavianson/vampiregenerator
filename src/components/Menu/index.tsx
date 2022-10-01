@@ -1,10 +1,11 @@
 import type { MenuProps } from "../../types/interfaces";
-import { Bite, Home, LogOut, Settings } from "../../assets/icons";
+import { Bite, Home, LogOut } from "../../assets/icons";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { MenuContainer, MenuItem, MenuItemButton } from "./styles";
-import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AccountContext";
 
 const Menu = ({ path }: MenuProps): JSX.Element => {
+	const { logout } = useAuth();
 	const navigate: NavigateFunction = useNavigate();
 	return (
 		<MenuContainer>
@@ -35,17 +36,18 @@ const Menu = ({ path }: MenuProps): JSX.Element => {
 					<MenuItemButton
 						onClick={(): void => navigate("/settings")}
 						active={path === "settings"}
-					>
-						<Settings />
-					</MenuItemButton>
+					></MenuItemButton>
 				</MenuItem>
 			</nav>
 			<MenuItem logout>
-				<Link to="/login">
-					<MenuItemButton>
-						<LogOut />
-					</MenuItemButton>
-				</Link>
+				<MenuItemButton
+					onClick={(e): void => {
+						logout();
+						e.stopPropagation();
+					}}
+				>
+					<LogOut />
+				</MenuItemButton>
 			</MenuItem>
 		</MenuContainer>
 	);

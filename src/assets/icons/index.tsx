@@ -26,15 +26,6 @@ export const LogOut = (): JSX.Element => (
 		></path>
 	</svg>
 );
-export const Settings = (): JSX.Element => (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="100%"
-		height="100%"
-		version="1"
-		viewBox="0 0 512 512"
-	></svg>
-);
 export const User = (): JSX.Element => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"

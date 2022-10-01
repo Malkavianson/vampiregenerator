@@ -1,12 +1,15 @@
 import "./App.css";
 import GlobalStyle from "./assets/styles/global";
+import { AuthProvider } from "./contexts/AccountContext";
 import Router from "./router";
 
 function App(): JSX.Element {
 	return (
 		<div className="App">
-			<GlobalStyle />
-			<Router />
+			<AuthProvider>
+				<GlobalStyle />
+				<Router />
+			</AuthProvider>
 		</div>
 	);
 }

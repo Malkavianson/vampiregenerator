@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { SubmitButtom, SwicherButtom } from "./styles";
+import { useAuth } from "../../contexts/AccountContext";
 import { api } from "../../services";
 import { useState } from "react";
 import Input from "../Input";
-import { SubmitButtom, SwicherButtom } from "./styles";
 
 interface DataType {
 	name?: string;
@@ -10,19 +11,13 @@ interface DataType {
 	password: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const postData = async (path: string, data: DataType) => {
-	return await api.post(`/${path}`, data).then(res => res);
-};
-
 const Gate = (): JSX.Element => {
-	const [mode, setMode] = useState(false);
-	const [credentials, setCredentials] = useState();
+	const { login } = useAuth();
+	const [mode, setMode] = useState(true);
 	const [valueName, setValueName] = useState("");
 	const [valueEmail, setValueEmail] = useState("");
 	const [valuePassword, setValuePassword] = useState("");
 
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const action = async (): Promise<void> => {
 		const data: DataType = {
 			email: valueEmail,
@@ -32,14 +27,14 @@ const Gate = (): JSX.Element => {
 		switch (mode) {
 			case false:
 				data.name = valueName;
-				const register = await postData("users", data);
+				const register = await api.post(`/users`, data).then(res => res);
 				switch (register.status) {
 					case 201:
 						delete data.name;
-						const loginAfterRegister = await postData("auth/login", data);
+						const loginAfterRegister = await api.post(`/auth/login`, data).then(res => res);
 						switch (loginAfterRegister.status) {
 							case 201:
-								setCredentials(loginAfterRegister.data);
+								login(loginAfterRegister.data);
 								break;
 
 							default:
@@ -55,19 +50,18 @@ const Gate = (): JSX.Element => {
 				break;
 
 			case true:
-				const login = await postData("auth/login", data);
-				switch (login.status) {
+				const sigin = await api.post(`/auth/login`, data).then(res => res);
+				switch (sigin.status) {
 					case 201:
-						setCredentials(login.data);
+						login(sigin.data);
 						break;
 
 					default:
-						console.log(login);
+						console.log(sigin);
 						break;
 				}
 				break;
 		}
-		console.log(credentials);
 	};
 
 	return (
@@ -93,16 +87,15 @@ const Gate = (): JSX.Element => {
 					/>
 				</div>
 
-				<Link to="/">
-					<SubmitButtom
-					// onClick={(e): void => {
-					// 	action();
-					// 	e.preventDefault();
-					// }}
-					>
-						{!mode ? `Register` : `SignIn`}
-					</SubmitButtom>
-				</Link>
+				<SubmitButtom
+					onClick={(e): void => {
+						action();
+						e.preventDefault();
+						e.stopPropagation();
+					}}
+				>
+					{!mode ? `Register` : `SignIn`}
+				</SubmitButtom>
 			</form>
 			<SwicherButtom
 				onClick={(e): void => {

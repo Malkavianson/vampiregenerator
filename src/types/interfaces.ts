@@ -1,5 +1,41 @@
 import { Skill } from "./types";
 
+export interface ApiKindred {
+	id: string;
+	kindredId: string;
+	kindredCreation: number;
+	image: string;
+	name: string;
+	player: string;
+	clan: string;
+	generation: number;
+	attributes: string;
+	abilities: string;
+	advantages: string;
+	createdAt?: Date;
+	updatedAt?: Date;
+}
+
+export interface Auth {
+	token: string;
+	user: CurrentUser;
+}
+
+export interface AxiosKindredData {
+	name?: string;
+	player?: string;
+	clan?: string;
+	generation?: number;
+}
+
+export interface CurrentUser {
+	createdAt: string;
+	email: string;
+	id: string;
+	name: string;
+	updatedAt: string;
+}
+
 export interface CssColors {
 	primaryColor: string;
 	secondaryColor: string;
@@ -39,22 +75,6 @@ export interface MenuItemButtonProps {
 	active?: boolean;
 }
 
-export interface ApiKindred {
-	id: string;
-	kindredId: string;
-	kindredCreation: number;
-	image: string;
-	name: string;
-	player: string;
-	clan: string;
-	generation: number;
-	attributes: string;
-	abilities: string;
-	advantages: string;
-	createdAt?: Date;
-	updatedAt?: Date;
-}
-
 export interface SkillSectionAttributeResponse {
 	type: string;
 	physical: SkillGroupResponse;
@@ -90,11 +110,4 @@ export interface Stats {
 
 export interface SubTypeProp {
 	subType: SkillGroupResponse;
-}
-
-export interface AxiosKindredData {
-	name?: string;
-	player?: string;
-	clan?: string;
-	generation?: number;
 }
