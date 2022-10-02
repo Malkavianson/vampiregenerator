@@ -1,5 +1,6 @@
+import { ProfileContainer, ProfileContentCards, ProfileContentContainer, ProfileContentHeader } from "./styles";
+import Favorites from "src/components/Favorites";
 import Menu from "../../components/Menu";
-import { ProfileContainer, ProfileContentContainer, ProfileContentHeader } from "./styles";
 
 const Profile = (): JSX.Element => {
 	return (
@@ -8,10 +9,13 @@ const Profile = (): JSX.Element => {
 			<ProfileContentContainer>
 				<ProfileContentHeader>
 					<div>
-						<h1>🧛 Favorites 🧛‍♀️</h1>
-						<h2>💻✍️ under building 💡⏳ </h2>
+						<h1>World of Darkness</h1>
+						<h2>🧛 Favorites 🧛‍♀️</h2>
 					</div>
 				</ProfileContentHeader>
+				<ProfileContentCards>
+					<Favorites />
+				</ProfileContentCards>
 			</ProfileContentContainer>
 		</ProfileContainer>
 	);

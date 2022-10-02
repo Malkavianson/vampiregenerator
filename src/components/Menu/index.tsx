@@ -1,11 +1,11 @@
 import type { MenuProps } from "../../types/interfaces";
-import { Bite, Home, LogOut } from "../../assets/icons";
+import { Bite, Home, LogOut, VampireProfile } from "../../assets/icons";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { MenuContainer, MenuItem, MenuItemButton } from "./styles";
-import { useAuth } from "../../contexts/AccountContext";
+import { useAuth } from "../../contexts/Account.contexts";
 
 const Menu = ({ path }: MenuProps): JSX.Element => {
-	const { logout } = useAuth();
+	const { logged, logout } = useAuth();
 	const navigate: NavigateFunction = useNavigate();
 	return (
 		<MenuContainer>
@@ -26,18 +26,24 @@ const Menu = ({ path }: MenuProps): JSX.Element => {
 						<Bite />
 					</MenuItemButton>
 				</MenuItem>
-				<MenuItem active={path === "profile"}>
-					<MenuItemButton
-						onClick={(): void => navigate("/profile")}
-						active={path === "profile"}
-					></MenuItemButton>
-				</MenuItem>
-				<MenuItem active={path === "settings"}>
-					<MenuItemButton
-						onClick={(): void => navigate("/settings")}
-						active={path === "settings"}
-					></MenuItemButton>
-				</MenuItem>
+				{logged && (
+					<>
+						<MenuItem active={path === "profile"}>
+							<MenuItemButton
+								onClick={(): void => navigate("/profile")}
+								active={path === "profile"}
+							>
+								<VampireProfile />
+							</MenuItemButton>
+						</MenuItem>
+						<MenuItem active={path === "settings"}>
+							<MenuItemButton
+								onClick={(): void => navigate("/settings")}
+								active={path === "settings"}
+							></MenuItemButton>
+						</MenuItem>
+					</>
+				)}
 			</nav>
 			<MenuItem logout>
 				<MenuItemButton

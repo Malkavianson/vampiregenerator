@@ -59,6 +59,12 @@ export const MenuItemButton = styled.button<MenuItemButtonProps>`
 
 	:hover {
 		transform: scale(1.1);
+		svg {
+			path#VampireEyes,
+			path#VampireMouth {
+				fill: #800000;
+			}
+		}
 	}
 
 	${({ active }): Interpolation<MenuItemProps> =>

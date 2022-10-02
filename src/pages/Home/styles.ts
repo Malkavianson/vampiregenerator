@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+export const CategorySelector = styled.div`
+	div {
+		display: flex;
+		flex-direction: column;
+
+		select {
+			font-family: "Modern Antiqua", cursive;
+
+			option {
+				font-family: "Modern Antiqua", cursive;
+			}
+		}
+	}
+`;
 export const HomeContainer = styled.div`
 	width: 100%;
 	height: 100vh;
@@ -7,11 +21,14 @@ export const HomeContainer = styled.div`
 	background: #282a36;
 	color: #f8f8f2;
 `;
-
+export const HomeContentCards = styled.main`
+	width: 100%;
+	height: calc(100% - calc(20vh + 25em));
+	overflow-y: auto;
+`;
 export const HomeContentContainer = styled.div`
 	width: calc(100% - 15rem);
 `;
-
 export const HomeContentHeader = styled.header`
 	width: 100%;
 	height: 20vh;
@@ -35,15 +52,6 @@ export const HomeContentHeader = styled.header`
 			font-size: 4rem;
 		}
 	}
-`;
-
-export const PageSelectors = styled.div`
-	height: 10em;
-	width: 100%;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	font-size: 2.5em;
 `;
 export const OrderBySelector = styled.div`
 	display: flex;
@@ -73,23 +81,11 @@ export const OrderDirectionSelector = styled.div`
 		}
 	}
 `;
-export const CategorySelector = styled.div`
-	div {
-		display: flex;
-		flex-direction: column;
-
-		select {
-			font-family: "Modern Antiqua", cursive;
-
-			option {
-				font-family: "Modern Antiqua", cursive;
-			}
-		}
-	}
-`;
-
-export const HomeContentCards = styled.main`
+export const PageSelectors = styled.div`
+	height: 10em;
 	width: 100%;
-	height: calc(100% - calc(20vh + 25em));
-	overflow-y: auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 2.5em;
 `;

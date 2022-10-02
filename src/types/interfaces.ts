@@ -1,4 +1,9 @@
+import { ReactNode } from "react";
 import { Skill } from "./types";
+
+export interface AllProvidersProps {
+	children: ReactNode;
+}
 
 export interface ApiKindred {
 	id: string;
@@ -14,6 +19,14 @@ export interface ApiKindred {
 	advantages: string;
 	createdAt?: Date;
 	updatedAt?: Date;
+}
+
+export interface ApiFavorites {
+	id: string;
+	favoritedAt: string;
+	userId: string;
+	kindredId: string;
+	kindred: ApiKindred;
 }
 
 export interface Auth {

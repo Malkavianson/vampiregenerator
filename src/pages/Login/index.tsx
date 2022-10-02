@@ -1,11 +1,15 @@
+import Menu from "../../components/Menu";
 import Gate from "../../components/Gate";
-import { LoginContainer } from "./styles";
+import { LoginContainer, LoginContent } from "./styles";
 
 const Login = (): JSX.Element => {
 	return (
-		<LoginContainer>
-			<Gate />
-		</LoginContainer>
+		<LoginContent>
+			<Menu path="login" />
+			<LoginContainer>
+				<Gate />
+			</LoginContainer>
+		</LoginContent>
 	);
 };
 

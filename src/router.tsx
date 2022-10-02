@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import { useAuth } from "./contexts/AccountContext";
+import { useAuth } from "./contexts/Account.contexts";
 import Generate from "./pages/Generate";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
@@ -15,6 +15,10 @@ const Router = (): JSX.Element => {
 				path="/"
 				element={<Home />}
 			/>
+			<Route
+				path="/generate"
+				element={<Generate />}
+			/>
 			{logged ? (
 				<>
 					<Route
@@ -24,10 +28,6 @@ const Router = (): JSX.Element => {
 					<Route
 						path="/settings"
 						element={<Settings />}
-					/>
-					<Route
-						path="/generate"
-						element={<Generate />}
 					/>
 				</>
 			) : (
@@ -40,7 +40,7 @@ const Router = (): JSX.Element => {
 				path="*"
 				element={
 					<Navigate
-						to={logged ? "/" : "/login"}
+						to={logged ? "/profile" : "/"}
 						replace
 					/>
 				}

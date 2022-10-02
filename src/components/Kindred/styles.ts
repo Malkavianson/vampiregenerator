@@ -1,31 +1,64 @@
-import styled from "styled-components";
+import styled, { css, FlattenSimpleInterpolation } from "styled-components";
+
+interface KindredAreaProps {
+	isFav?: boolean;
+}
 
 export const FaceFramer = styled.div`
 	position: absolute;
-	height: 100%;
-	width: 100%;
+	height: 15rem;
+	max-height: 50%;
+	width: 15rem;
+	max-width: 50%;
+	border-radius: 0 0 0 5rem;
 	top: 0;
-	left: 0;
+	right: 0;
+	padding: 2rem 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	gap: 3rem;
 	transition: 0.84s;
 
 	div {
 		svg {
 			opacity: 0;
 		}
+		img {
+			max-height: 100%;
+			width: 100%;
+		}
 	}
 `;
 
-export const KindredArea = styled.section`
+export const KindredArea = styled.section<KindredAreaProps>`
 	position: relative;
 	width: 95%;
 	height: auto;
 	max-width: 80em;
 
+	${({ isFav }): false | FlattenSimpleInterpolation | undefined =>
+		isFav &&
+		css`
+			&:hover > ${FaceFramer} {
+				div {
+					svg {
+						path#9 {
+							fill: #9c7f00;
+						}
+
+						path#A {
+							fill: #edd400;
+						}
+					}
+				}
+			}
+		`}
+
 	&:hover > ${FaceFramer} {
-		background: #00000022;
+		background: #00000011;
 		z-index: 1;
 
 		div {
@@ -36,20 +69,27 @@ export const KindredArea = styled.section`
 				z-index: 1;
 				cursor: pointer;
 
-				path {
-					fill: #00000022;
+				path#Download {
+					fill: #f55;
 				}
 			}
 
 			svg:hover {
-				path {
+				path#Download {
 					fill: #bbbbbb77;
 				}
 			}
 
 			svg:active {
-				path {
+				path#Download {
 					stroke: #ffffff77;
+				}
+				path#9 {
+					fill: #9c7f00;
+				}
+
+				path#A {
+					fill: #edd400;
 				}
 			}
 		}

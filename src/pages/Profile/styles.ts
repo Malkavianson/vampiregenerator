@@ -8,13 +8,19 @@ export const ProfileContainer = styled.div`
 	color: #f8f8f2;
 `;
 
+export const ProfileContentCards = styled.main`
+	width: 100%;
+	height: calc(100% - calc(20vh));
+	overflow-y: auto;
+`;
+
 export const ProfileContentContainer = styled.div`
 	width: calc(100% - 15rem);
 `;
 
 export const ProfileContentHeader = styled.header`
 	width: 100%;
-	height: 16vh;
+	height: 20vh;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

@@ -1,6 +1,6 @@
 // import { Link } from "react-router-dom";
 import { SubmitButtom, SwicherButtom } from "./styles";
-import { useAuth } from "../../contexts/AccountContext";
+import { useAuth } from "../../contexts/Account.contexts";
 import { api } from "../../services";
 import { useState } from "react";
 import Input from "../Input";

@@ -1,11 +1,14 @@
 import { FaceFramer, KindredArea, KindredHeader, KindredMain, KindredSheet, TypeTable, TypeTBody, TypeTBodyCell, TypeTBodyRow, TypeTHead, TypeTHeadCell, TypeTHeadRow } from "./styles";
-import blankKindred from "../../utils/blanKindred";
+import { useFavorites } from "../../contexts/Favorites.context";
+import { useAuth } from "../../contexts/Account.contexts";
 import type { ApiKindred } from "../../types/interfaces";
+import { Download, StarSvg } from "../../assets/icons";
+import { useEffect, useRef, useState } from "react";
+import blankKindred from "../../utils/blanKindred";
 import loader from "../../assets/icons/loader.png";
-import { Download } from "../../assets/icons";
-import { useRef, useState } from "react";
 import SubType from "../SubType/Index";
 import html2canvas from "html2canvas";
+import { api } from "../../services";
 import { jsPDF } from "jspdf";
 
 interface PropKindred {
@@ -13,8 +16,13 @@ interface PropKindred {
 }
 
 const Kindred = ({ kindred }: PropKindred): JSX.Element => {
+	const { logged, currentUser } = useAuth();
+	const { favorites, handleGetFavorites } = useFavorites();
+
 	const printRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+	const [isFav, setIsFav] = useState(false);
 	const [toDownload, setToDownload] = useState(false);
+	const [toFav, setToFav] = useState(false);
 
 	const handleDownloadPdf = async (): Promise<void> => {
 		const pdf = new jsPDF({
@@ -40,6 +48,55 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 		pdf.save(`${pdfName}.pdf`);
 	};
 
+	const handleFavorite = (): void => {
+		if (favorites.some(e => e.kindredId === kindred.id)) {
+			setIsFav(true);
+		}
+	};
+
+	const favThis = (): void => {
+		if (logged && currentUser) {
+			switch (isFav) {
+				case true:
+					const favId = favorites.find(e => e.kindredId === kindred.id);
+					if (favId) {
+						const deleteData = {
+							data: {
+								favoriteId: favId.id,
+							},
+						};
+
+						console.log(deleteData);
+
+						api.delete(`/favorites`, deleteData).then(res => {
+							if (res.status === 204) {
+								handleGetFavorites();
+							}
+						});
+					}
+					break;
+				case false:
+					const body = {
+						userId: currentUser.user.id,
+						kindredId: kindred.id,
+					};
+
+					console.log(body);
+
+					api.post(`/favorites`, body).then(res => {
+						if (res.status === 201) {
+							handleGetFavorites();
+						}
+					});
+					break;
+			}
+		}
+	};
+
+	useEffect(() => {
+		if (logged) handleFavorite();
+	}, [favorites]);
+
 	switch (kindred) {
 		case blankKindred:
 			return <></>;
@@ -52,8 +109,7 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 			};
 
 			return (
-				<KindredArea>
-					<div></div>
+				<KindredArea isFav={isFav}>
 					<KindredSheet ref={printRef}>
 						<h1>Vampire the Masquerade</h1>
 						<KindredHeader>
@@ -148,22 +204,21 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 						</KindredMain>
 					</KindredSheet>
 					<FaceFramer>
-						{!toDownload && (
+						{!toFav && (
 							<div
-								onClick={(e): void => {
-									setToDownload(!toDownload);
-									handleDownloadPdf();
-									e.stopPropagation();
+								onClick={(): void => {
+									setToFav(!toFav);
+									favThis();
 								}}
 							>
-								<Download />
+								<StarSvg />
 							</div>
 						)}
-						{toDownload && (
+						{toFav && (
 							<div>
 								<>
 									{setTimeout(() => {
-										setToDownload(!toDownload);
+										setToFav(!toFav);
 									}, 5000)}
 									<img
 										src={loader}
@@ -172,6 +227,33 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 								</>
 							</div>
 						)}
+
+						<>
+							{!toDownload && (
+								<div
+									onClick={(e): void => {
+										setToDownload(!toDownload);
+										handleDownloadPdf();
+										e.stopPropagation();
+									}}
+								>
+									<Download />
+								</div>
+							)}
+							{toDownload && (
+								<div>
+									<>
+										{setTimeout(() => {
+											setToDownload(!toDownload);
+										}, 5000)}
+										<img
+											src={loader}
+											alt="Loader"
+										/>
+									</>
+								</div>
+							)}
+						</>
 					</FaceFramer>
 				</KindredArea>
 			);

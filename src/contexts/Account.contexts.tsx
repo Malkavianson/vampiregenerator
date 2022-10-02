@@ -1,22 +1,20 @@
-import { createContext, useContext, ReactNode, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import type { AllProvidersProps, Auth } from "../types/interfaces";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services";
-import { Auth } from "../types/interfaces";
-
-interface AuthProviderProps {
-	children: ReactNode;
-}
 
 interface AuthProviderData {
 	logged: boolean;
 	login: (params: Auth) => void;
 	logout: () => void;
+	currentUser: Auth | undefined;
 }
 
 const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 
-export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
+export const AuthProvider = ({ children }: AllProvidersProps): JSX.Element => {
 	const [logged, setLogged] = useState<boolean>(false);
+	const [currentUser, setCurrentUser] = useState<Auth>();
 	const navigate = useNavigate();
 
 	const login = ({ token, user }: Auth): void => {
@@ -45,6 +43,12 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
 		api.get(`/users/${user.id}`, headers)
 			.then(() => {
 				setLogged(true);
+				if (token) {
+					setCurrentUser({
+						token,
+						user,
+					});
+				}
 				navigate("/");
 			})
 			.catch(() => {
@@ -58,7 +62,7 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
 		if (token) checkTokenExpiration();
 	}, []);
 
-	return <AuthContext.Provider value={{ logged, login, logout }}>{children}</AuthContext.Provider>;
+	return <AuthContext.Provider value={{ logged, login, logout, currentUser }}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = (): AuthProviderData => useContext(AuthContext);
