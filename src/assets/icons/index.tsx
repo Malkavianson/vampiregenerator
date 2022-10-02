@@ -72,7 +72,7 @@ export const Bite = (): JSX.Element => {
 				id="VampireMouthBlood"
 				fill="#800"
 				stroke="black"
-				stroke-width="1"
+				strokeWidth="1"
 				d="M 384.00,248.00
            C 402.24,248.41 412.56,264.35 417.74,280.00
              419.35,282.04 422.65,290.70 420.74,296.00
@@ -120,7 +120,7 @@ export const Bite = (): JSX.Element => {
 				id="VampireMouthLips"
 				fill="#803545"
 				stroke="black"
-				stroke-width="1"
+				strokeWidth="1"
 				d="M 32.00,215.00
            C 32.00,215.00 50.58,167.00 50.58,167.00
              65.06,132.47 84.72,92.05 106.88,62.00
@@ -189,7 +189,7 @@ export const Bite = (): JSX.Element => {
 				id="VampireMouthTeeth"
 				fill="#fff"
 				stroke="black"
-				stroke-width="1"
+				strokeWidth="1"
 				d="M 128.00,216.00
            C 105.34,214.09 94.01,189.74 90.00,170.00
              89.08,165.47 87.08,154.11 88.60,150.00
@@ -259,7 +259,7 @@ export const Bite = (): JSX.Element => {
 				id="VampireMouthInside"
 				fill="none"
 				stroke="none"
-				stroke-width="1"
+				strokeWidth="1"
 				d="M 87.00,150.00
            C 87.00,150.00 89.66,169.00 89.66,169.00
              93.73,188.37 105.73,213.99 128.00,216.00
@@ -306,7 +306,7 @@ export const Bite = (): JSX.Element => {
 				id="VampireMouthTongue"
 				fill="#f55"
 				stroke="black"
-				stroke-width="1"
+				strokeWidth="1"
 				d="M 128.00,288.00
            C 128.00,288.00 128.00,271.00 128.00,271.00
              128.07,261.02 132.90,259.04 141.00,254.43
