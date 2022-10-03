@@ -1,6 +1,6 @@
 import { ProfileContainer, ProfileContentCards, ProfileContentContainer, ProfileContentHeader } from "./styles";
 import Favorites from "src/components/Favorites";
-import OrderNav from "../../components/OrderNav";
+// import OrderNav from "../../components/OrderNav";
 import Menu from "../../components/Menu";
 
 const Profile = (): JSX.Element => {
@@ -14,7 +14,7 @@ const Profile = (): JSX.Element => {
 						<h2>🧛 Favorites 🧛‍♀️</h2>
 					</div>
 				</ProfileContentHeader>
-				<OrderNav />
+				{/* <OrderNav /> */}
 				<ProfileContentCards>
 					<Favorites />
 				</ProfileContentCards>
