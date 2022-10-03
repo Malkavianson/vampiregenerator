@@ -10,7 +10,7 @@ export const ProfileContainer = styled.div`
 
 export const ProfileContentCards = styled.main`
 	width: 100%;
-	height: calc(100% - calc(20vh));
+	height: calc(100% - calc(20vh + 25em));
 	overflow-y: auto;
 `;
 
