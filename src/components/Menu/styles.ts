@@ -60,6 +60,7 @@ export const MenuItemButton = styled.button<MenuItemButtonProps>`
 	:hover {
 		transform: scale(1.1);
 		svg {
+			path#VampireMouthBlood,
 			path#VampireEyes,
 			path#VampireMouth {
 				fill: #800000;

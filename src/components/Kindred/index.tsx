@@ -204,30 +204,33 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 						</KindredMain>
 					</KindredSheet>
 					<FaceFramer>
-						{!toFav && (
-							<div
-								onClick={(): void => {
-									setToFav(!toFav);
-									favThis();
-								}}
-							>
-								<StarSvg />
-							</div>
+						{logged && (
+							<>
+								{!toFav && (
+									<div
+										onClick={(): void => {
+											setToFav(!toFav);
+											favThis();
+										}}
+									>
+										<StarSvg />
+									</div>
+								)}
+								{toFav && (
+									<div>
+										<>
+											{setTimeout(() => {
+												setToFav(!toFav);
+											}, 5000)}
+											<img
+												src={loader}
+												alt="Loader"
+											/>
+										</>
+									</div>
+								)}
+							</>
 						)}
-						{toFav && (
-							<div>
-								<>
-									{setTimeout(() => {
-										setToFav(!toFav);
-									}, 5000)}
-									<img
-										src={loader}
-										alt="Loader"
-									/>
-								</>
-							</div>
-						)}
-
 						<>
 							{!toDownload && (
 								<div
