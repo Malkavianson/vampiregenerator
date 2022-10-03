@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { AllProvidersProps, ApiFavorites } from "src/types/interfaces";
+import { AllProvidersProps, ApiFavorites } from "../types/interfaces";
 import { api } from "../services";
 import { useAuth } from "./Account.contexts";
 

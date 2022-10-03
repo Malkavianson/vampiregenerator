@@ -76,10 +76,29 @@ export const GenerateContentCardsForm = styled.section`
 `;
 
 export const Homies = styled.div`
+	position: relative;
 	height: 100%;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+`;
+
+export const OnlyLogged = styled.div`
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 2rem;
+	z-index: 1;
+	color: #000;
+	text-shadow: -0.5rem 0.5rem 0.5rem #f555;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	background: #f1f1f1bb;
+	cursor: pointer;
 `;
 
 export const Values = styled.div`
@@ -145,5 +164,6 @@ export const PublicButton = styled.button`
 	border: none;
 	background: transparent;
 	font-family: "Modern Antiqua", cursive;
+	cursor: pointer;
 	z-index: 1;
 `;

@@ -51,6 +51,8 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 	const handleFavorite = (): void => {
 		if (favorites.some(e => e.kindredId === kindred.id)) {
 			setIsFav(true);
+		} else {
+			setIsFav(false);
 		}
 	};
 
@@ -65,9 +67,6 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 								favoriteId: favId.id,
 							},
 						};
-
-						console.log(deleteData);
-
 						api.delete(`/favorites`, deleteData).then(res => {
 							if (res.status === 204) {
 								handleGetFavorites();
@@ -80,9 +79,6 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 						userId: currentUser.user.id,
 						kindredId: kindred.id,
 					};
-
-					console.log(body);
-
 					api.post(`/favorites`, body).then(res => {
 						if (res.status === 201) {
 							handleGetFavorites();

@@ -1,14 +1,17 @@
 import type { AxiosKindredData } from "../../types/interfaces";
 import blankKindred from "../../utils/blanKindred";
-import { GenerateContentCards, GenerateContentCardsForm, GenerateContentContainer, GenerateContentHeader, Homies, NewKindred, Public, PublicButton, Values } from "./styles";
+import { GenerateContentCards, GenerateContentCardsForm, GenerateContentContainer, GenerateContentHeader, Homies, NewKindred, OnlyLogged, Public, PublicButton, Values } from "./styles";
 import { ButtonGenerate } from "../../assets/icons";
 import { api } from "../../services";
 import { useState } from "react";
 import Kindred from "../Kindred";
 import Loader from "../Loader";
 import Input from "../Input";
+import { useAuth } from "../../contexts/Account.contexts";
+import { Link } from "react-router-dom";
 
 const Form = (): JSX.Element => {
+	const { logged } = useAuth();
 	const [status, setStatus] = useState(0);
 	const [resKindred, setResKindred] = useState(blankKindred);
 
@@ -63,6 +66,16 @@ const Form = (): JSX.Element => {
 							<fieldset>
 								<legend>Fill kindred informations</legend>
 								<Homies>
+									{!logged && (
+										<Link to={"/login"}>
+											<OnlyLogged>
+												You must be logged to edit new kindred information
+												<br />
+												<br />
+												(BUT you still can embrace a random stranger)
+											</OnlyLogged>
+										</Link>
+									)}
 									<Input
 										label="name"
 										type="text"

@@ -1,3 +1,4 @@
+import { useOrderSettings } from "../../contexts/OrderSettings.contexts";
 import { useFavorites } from "../../contexts/Favorites.context";
 import { useAuth } from "../../contexts/Account.contexts";
 import { KindredsPool, LoadingTitle } from "./styles";
@@ -5,13 +6,12 @@ import blankKindred from "../../utils/blanKindred";
 import { useEffect, useState } from "react";
 import { api } from "../../services";
 import Kindred from "../Kindred";
-interface PropsType {
-	orderBy: string;
-	orderDirection: string;
-	category: string;
-	// numberPerPages: number;
-}
-const Kindreds = ({ orderBy, orderDirection, category /*, numberPerPages*/ }: PropsType): JSX.Element => {
+
+const Kindreds = (): JSX.Element => {
+	const { orderBy, orderDirection, category } = useOrderSettings();
+
+	// const [numberPerPages, setNumberPerPages] = useState(10);
+
 	const { logged } = useAuth();
 	const { handleGetFavorites } = useFavorites();
 	const [status, getStatus] = useState(false);

@@ -8,6 +8,7 @@ export const SwicherButtom = styled.button`
 	border-radius: 1em;
 	font-family: "Modern Antiqua", cursive;
 	font-size: 4em;
+	cursor: pointer;
 
 	&:hover {
 		transform: scale(0.98);
@@ -22,6 +23,7 @@ export const SubmitButtom = styled.button`
 	border-radius: 2em;
 	font-family: "Modern Antiqua", cursive;
 	font-size: 6em;
+	cursor: pointer;
 
 	&:hover {
 		transform: scale(0.98);
