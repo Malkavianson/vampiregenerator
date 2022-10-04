@@ -92,6 +92,7 @@ const Favorites = (): JSX.Element => {
 				return (
 					<Kindred
 						kindred={e.kindred}
+						currentKey={i}
 						key={i}
 					/>
 				);

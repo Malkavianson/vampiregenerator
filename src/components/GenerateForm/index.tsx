@@ -198,7 +198,10 @@ const Form = (): JSX.Element => {
 					<NewKindred>
 						{Boolean(status === 201) && (
 							<>
-								<Kindred kindred={resKindred} />
+								<Kindred
+									currentKey={1}
+									kindred={resKindred}
+								/>
 								<Public>
 									<ButtonGenerate />
 									<PublicButton

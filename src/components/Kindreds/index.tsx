@@ -139,6 +139,7 @@ const Kindreds = (): JSX.Element => {
 						return (
 							<Kindred
 								kindred={e}
+								currentKey={i}
 								key={i}
 							/>
 						);

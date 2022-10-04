@@ -13,9 +13,10 @@ import { jsPDF } from "jspdf";
 
 interface PropKindred {
 	kindred: ApiKindred;
+	currentKey: number;
 }
 
-const Kindred = ({ kindred }: PropKindred): JSX.Element => {
+const Kindred = ({ kindred, currentKey }: PropKindred): JSX.Element => {
 	const { logged, currentUser } = useAuth();
 	const { favorites, handleGetFavorites } = useFavorites();
 
@@ -105,26 +106,29 @@ const Kindred = ({ kindred }: PropKindred): JSX.Element => {
 			};
 
 			return (
-				<KindredArea isFav={isFav}>
+				<KindredArea
+					key={`kindredKey_${currentKey}`}
+					isFav={isFav}
+				>
 					<KindredSheet ref={printRef}>
 						<h1>Vampire the Masquerade</h1>
 						<KindredHeader>
 							<div>
-								<span>Player: {kindred.player}</span>
-								<span>Name: {kindred.name}</span>
-								<span>{`Kindred register: ${kindred.kindredId}`}</span>
+								<span key={`playerKey_${currentKey}`}>Player: {kindred.player}</span>
+								<span key={`nameKey_${currentKey}`}>Name: {kindred.name}</span>
+								<span key={`RegisterKey_${currentKey}`}>{`Kindred register: ${kindred.kindredId}`}</span>
 							</div>
 							<div>
-								<span>Generation: {kindred.generation}º</span>
+								<span key={`generationKey_${currentKey}`}>Generation: {kindred.generation}º</span>
 								<img
 									crossOrigin="anonymous"
 									src={kindred.image}
 									alt={`${kindred.clan} symbol`}
 								/>
-								<span>Clan: {kindred.clan}</span>
+								<span key={`clanKey_${currentKey}`}>Clan: {kindred.clan}</span>
 							</div>
 						</KindredHeader>
-						<KindredMain>
+						<KindredMain key={`kindredDataKey_${currentKey}`}>
 							<TypeTable>
 								<TypeTHead>
 									<TypeTHeadRow>
