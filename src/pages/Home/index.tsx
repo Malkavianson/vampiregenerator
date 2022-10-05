@@ -1,7 +1,8 @@
-import { HomeContainer, HomeContentCards, HomeContentContainer, HomeContentHeader } from "./styles";
+import { HomeContainer, HomeContentCards, HomeContentContainer, HomeContentHeader, HomeContentHeaderTitle } from "./styles";
 import Kindreds from "../../components/Kindreds";
 import OrderNav from "../../components/OrderNav";
 import Menu from "../../components/Menu";
+import { Title } from "src/assets/icons";
 
 const Home = (): JSX.Element => {
 	return (
@@ -10,7 +11,9 @@ const Home = (): JSX.Element => {
 			<HomeContentContainer>
 				<HomeContentHeader>
 					<div>
-						<h1>World of Darkness</h1>
+						<HomeContentHeaderTitle>
+							<Title />
+						</HomeContentHeaderTitle>
 						<h2>Welcome to the domain of Kindreds</h2>
 					</div>
 				</HomeContentHeader>
