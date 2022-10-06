@@ -59,11 +59,15 @@ const Kindred = ({ kindred, currentKey }: PropKindred): JSX.Element => {
 
 	const favThis = (): void => {
 		if (logged && currentUser) {
+			const token = localStorage.getItem("token");
 			switch (isFav) {
 				case true:
 					const favId = favorites.find(e => e.kindredId === kindred.id);
 					if (favId) {
 						const deleteData = {
+							headers: {
+								Authorization: `Bearer ${token}`,
+							},
 							data: {
 								favoriteId: favId.id,
 							},
@@ -76,11 +80,17 @@ const Kindred = ({ kindred, currentKey }: PropKindred): JSX.Element => {
 					}
 					break;
 				case false:
+					const headers = {
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					};
+
 					const body = {
 						userId: currentUser.user.id,
 						kindredId: kindred.id,
 					};
-					api.post(`/favorites`, body).then(res => {
+					api.post(`/favorites`, body, headers).then(res => {
 						if (res.status === 201) {
 							handleGetFavorites();
 						}
