@@ -72,6 +72,7 @@ const OrderNav = (): JSX.Element => {
 							onChange={(e): void => {
 								setOrderDirection(e.target.value);
 							}}
+							defaultChecked
 						/>
 						<label htmlFor="orderBy-0">Asc⬆</label>
 					</div>
@@ -84,7 +85,6 @@ const OrderNav = (): JSX.Element => {
 							onChange={(e): void => {
 								setOrderDirection(e.target.value);
 							}}
-							defaultChecked
 						/>
 						<label htmlFor="orderBy-1">Desc⬇</label>
 					</div>

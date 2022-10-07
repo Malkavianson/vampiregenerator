@@ -1,38 +1,61 @@
 import styled from "styled-components";
 
-export const SettingsContainer = styled.div`
+export const SettingsContent = styled.main`
 	width: 100%;
-	height: 100vh;
+	height: calc(100% - 20vh);
 	display: flex;
-	background: #282a36;
-	color: #f8f8f2;
-`;
-
-export const SettingsContentContainer = styled.div`
-	width: calc(100% - 15rem);
-`;
-
-export const SettingsContentHeader = styled.header`
-	width: 100%;
-	height: 16vh;
-	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
 	align-items: center;
-	padding: 0 2rem;
-	box-sizing: border-box;
+	justify-content: flex-start;
+	overflow-y: auto;
+`;
 
-	div {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-evenly;
-		h1 {
-			font-size: 7rem;
-		}
-		h2 {
-			font-size: 4rem;
-		}
+export const ToggleButtom = styled.button`
+	height: 3em;
+	width: 9em;
+	background: #ff5;
+	border: none;
+	border-radius: 2em;
+	font-family: "Modern Antiqua", cursive;
+	font-size: 4em;
+	margin-bottom: 5rem;
+	cursor: pointer;
+
+	&:hover {
+		transform: scale(0.99);
+	}
+`;
+
+export const SubmitButtom = styled.button`
+	height: 3em;
+	width: 9em;
+	background: #f55;
+	border: none;
+	border-radius: 2em;
+	font-family: "Modern Antiqua", cursive;
+	font-size: 6em;
+	margin-bottom: 5rem;
+	cursor: pointer;
+
+	&:hover {
+		transform: scale(0.99);
+	}
+`;
+
+export const FormContent = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+
+	legend {
+		line-height: 2em;
+		font-size: 5rem;
+	}
+	span {
+		font-size: 3rem;
+		color: #aaa;
 	}
 `;

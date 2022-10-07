@@ -1,25 +1,26 @@
-import { ProfileContainer, ProfileContentCards, ProfileContentContainer, ProfileContentHeader } from "./styles";
+import { Container, ContentContainer, ContentHeader } from "../styles";
+import { ProfileContentCards } from "./styles";
 import Favorites from "src/components/Favorites";
 // import OrderNav from "../../components/OrderNav";
 import Menu from "../../components/Menu";
 
 const Profile = (): JSX.Element => {
 	return (
-		<ProfileContainer>
+		<Container>
 			<Menu path="profile" />
-			<ProfileContentContainer>
-				<ProfileContentHeader>
+			<ContentContainer>
+				<ContentHeader>
 					<div>
 						<h1>World of Darkness</h1>
 						<h2>🧛 Favorites 🧛‍♀️</h2>
 					</div>
-				</ProfileContentHeader>
+				</ContentHeader>
 				{/* <OrderNav /> */}
 				<ProfileContentCards>
 					<Favorites />
 				</ProfileContentCards>
-			</ProfileContentContainer>
-		</ProfileContainer>
+			</ContentContainer>
+		</Container>
 	);
 };
 
