@@ -59,7 +59,6 @@ const Settings = (): JSX.Element => {
 	const patchUser = async (): Promise<void> => {
 		const data: DataType = {};
 		if (logged) {
-			console.log(valueName, valueEmail, valuePassword);
 			if (valueName !== "") {
 				if (validateName(valueName)) {
 					data.name = valueName;
@@ -84,6 +83,8 @@ const Settings = (): JSX.Element => {
 						},
 					};
 					const patch = await api.patch(`/users/${currentUser.user.id}`, data, header).then(res => res);
+					console.log("Patched");
+					console.log(patch);
 					if (patch.status === 200) {
 						logout();
 					}
