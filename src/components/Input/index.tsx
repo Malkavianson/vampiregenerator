@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Values } from "./styles";
 
 interface InputType {
@@ -10,6 +11,8 @@ interface InputType {
 }
 
 const Input = ({ label, type, value, step, max, min }: InputType): JSX.Element => {
+	const [blind, setBlind] = useState<boolean>(true);
+
 	switch (type) {
 		case "number":
 			return (
@@ -32,6 +35,31 @@ const Input = ({ label, type, value, step, max, min }: InputType): JSX.Element =
 				</Values>
 			);
 
+		case "password":
+			return (
+				<Values>
+					<label htmlFor={label}>{label}</label>
+					<div id="container">
+						<div
+							id="blind"
+							onClick={(): void => setBlind(!blind)}
+						>
+							{blind ? `🔒` : `🔓`}
+						</div>
+						<input
+							id={`${label}_${type}_input`}
+							name={label}
+							placeholder={label}
+							title={`Choose ${label}`}
+							type={blind ? `password` : `text`}
+							onChange={(e): void => {
+								e.stopPropagation();
+								value(e.target.value);
+							}}
+						/>
+					</div>
+				</Values>
+			);
 		default:
 			return (
 				<Values>

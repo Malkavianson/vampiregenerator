@@ -65,6 +65,10 @@ export const MenuItemButton = styled.button<MenuItemButtonProps>`
 			path#VampireMouth {
 				fill: #800000;
 			}
+			path#Gear {
+				fill: #f559;
+				stroke: #fff;
+			}
 		}
 	}
 

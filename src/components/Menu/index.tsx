@@ -1,8 +1,8 @@
-import type { MenuProps } from "../../types/interfaces";
-import { Bite, Home, LogOut, VampireProfile } from "../../assets/icons";
-import { NavigateFunction, useNavigate } from "react-router-dom";
+import { Bite, Gear, Home, LogOut, VampireProfile } from "../../assets/icons";
 import { MenuContainer, MenuItem, MenuItemButton } from "./styles";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/Account.contexts";
+import type { MenuProps } from "../../types/interfaces";
 
 const Menu = ({ path }: MenuProps): JSX.Element => {
 	const { logged, logout } = useAuth();
@@ -40,7 +40,9 @@ const Menu = ({ path }: MenuProps): JSX.Element => {
 							<MenuItemButton
 								onClick={(): void => navigate("/settings")}
 								active={path === "settings"}
-							></MenuItemButton>
+							>
+								<Gear />
+							</MenuItemButton>
 						</MenuItem>
 					</>
 				)}

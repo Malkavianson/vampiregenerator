@@ -9,7 +9,6 @@ import { api } from "src/services";
 
 interface DataType {
 	name?: string;
-	email?: string;
 	password?: string;
 }
 
@@ -31,15 +30,6 @@ const validateName = (name: string): boolean | void => {
 	}
 };
 
-const validateEmail = (mail: string): boolean | void => {
-	const isEmail = /\S+@\S+\.\S+/;
-	if (isEmail.test(mail)) {
-		return isEmail.test(mail);
-	} else {
-		error("Email must be in format mail@mail.com");
-	}
-};
-
 const validatePassword = (pw: string): boolean | void => {
 	const isPw = /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
 	if (isPw.test(pw) && pw.length > 7) {
@@ -53,8 +43,8 @@ const Settings = (): JSX.Element => {
 	const { currentUser, logged, logout } = useAuth();
 	const [settingPage, setSettingPage] = useState(true);
 	const [valueName, setValueName] = useState("");
-	const [valueEmail, setValueEmail] = useState("");
 	const [valuePassword, setValuePassword] = useState("");
+	const [blind, setBlind] = useState(false);
 
 	const patchUser = async (): Promise<void> => {
 		const data: DataType = {};
@@ -64,18 +54,13 @@ const Settings = (): JSX.Element => {
 					data.name = valueName;
 				}
 			}
-			if (valueEmail !== "") {
-				if (validateEmail(valueEmail)) {
-					data.email = valueEmail;
-				}
-			}
 			if (valuePassword !== "") {
 				if (validatePassword(valuePassword)) {
 					data.password = valuePassword;
 				}
 			}
 
-			if (Boolean(data.name) || Boolean(data.email) || Boolean(data.password)) {
+			if (Boolean(data.name) || Boolean(data.password)) {
 				if (currentUser) {
 					const header = {
 						headers: {
@@ -117,16 +102,12 @@ const Settings = (): JSX.Element => {
 							<form name="update">
 								<legend>Update your information</legend>
 								<span>You must to sign in after update profile</span>
+								<span>You cannot change your e-mail</span>
 								<div>
 									<Input
 										label="name"
 										type="text"
 										value={setValueName}
-									/>
-									<Input
-										label="email"
-										type="email"
-										value={setValueEmail}
 									/>
 									<Input
 										label="password"
@@ -148,21 +129,30 @@ const Settings = (): JSX.Element => {
 						</FormContent>
 					) : (
 						<div>
-							<SubmitButtom
-								onClick={(e): void => {
-									if (currentUser) {
-										api.delete(`/users/${currentUser.user.id}`, {
-											headers: {
-												Authorization: `Bearer ${currentUser.token}`,
-											},
-										});
-									}
-									e.preventDefault();
-									e.stopPropagation();
-								}}
-							>
-								Delete profile
-							</SubmitButtom>
+							{!blind && (
+								<SubmitButtom
+									onClick={(e): void => {
+										if (currentUser) {
+											setBlind(!blind);
+											const headers = {
+												headers: {
+													Authorization: `Bearer ${currentUser.token}`,
+												},
+											};
+											api.delete(`/users/${currentUser.user.id}`, headers).then(res => {
+												console.log(res);
+												if (res.status === 204) {
+													logout();
+												}
+											});
+										}
+										e.preventDefault();
+										e.stopPropagation();
+									}}
+								>
+									{blind && currentUser ? `Removing ${currentUser.user.name}'s account...` : `Delete profile`}
+								</SubmitButtom>
+							)}
 						</div>
 					)}
 				</SettingsContent>
