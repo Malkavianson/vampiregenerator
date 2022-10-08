@@ -8,6 +8,20 @@ export const Values = styled.div`
 	gap: 0.3em;
 	font-size: 1rem;
 
+	div#container {
+		position: relative;
+		height: auto;
+		cursor: pointer;
+
+		div {
+			position: absolute;
+			bottom: 2em;
+			right: 0;
+			font-size: 5em;
+			max-height: 100%;
+		}
+	}
+
 	label {
 		text-transform: capitalize;
 		font-size: 5em;
