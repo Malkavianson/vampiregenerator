@@ -1,3 +1,4 @@
+import mixings from "src/assets/styles/mixins";
 import styled from "styled-components";
 
 export const HomeContentCards = styled.main`
@@ -7,7 +8,7 @@ export const HomeContentCards = styled.main`
 `;
 
 export const HomeContentHeaderTitle = styled.div`
-	border: inset 1px #fffc;
+	border: inset 1px ${mixings.colors.contrast1}cc;
 	border-radius: 25rem;
 	max-height: 25%;
 	max-width: 70rem;

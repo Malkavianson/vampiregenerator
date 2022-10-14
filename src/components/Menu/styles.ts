@@ -1,5 +1,6 @@
 import { MenuItemButtonProps, MenuItemProps } from "../../types/interfaces";
 import styled, { css, Interpolation } from "styled-components";
+import mixings from "src/assets/styles/mixins";
 
 export const MenuContainer = styled.div`
 	width: 15vw;
@@ -76,6 +77,6 @@ export const MenuItemButton = styled.button<MenuItemButtonProps>`
 		active &&
 		css`
 			background-color: #ff5555;
-			color: #ffffff;
+			color: ${mixings.colors.contrast1};
 		`}
 `;

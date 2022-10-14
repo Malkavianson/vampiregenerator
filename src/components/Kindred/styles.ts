@@ -1,3 +1,4 @@
+import mixings from "src/assets/styles/mixins";
 import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 
 interface KindredAreaProps {
@@ -58,7 +59,7 @@ export const KindredArea = styled.section<KindredAreaProps>`
 		`}
 
 	&:hover > ${FaceFramer} {
-		background: #00000011;
+		background: ${mixings.colors.contrast0}11;
 		z-index: 1;
 
 		div {

@@ -1,3 +1,4 @@
+import mixings from "src/assets/styles/mixins";
 import styled from "styled-components";
 
 export const GenerateContainer = styled.div`
@@ -89,7 +90,7 @@ export const OnlyLogged = styled.div`
 	height: 100%;
 	border-radius: 2rem;
 	z-index: 1;
-	color: #000;
+	color: ${mixings.colors.contrast0};
 	text-shadow: -0.5rem 0.5rem 0.5rem #f555;
 	display: flex;
 	align-items: center;
