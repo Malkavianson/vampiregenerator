@@ -1,12 +1,13 @@
 import { MenuItemButtonProps, MenuItemProps } from "../../types/interfaces";
 import styled, { css, Interpolation } from "styled-components";
+import mixings from "src/assets/styles/mixins";
 
 export const MenuContainer = styled.div`
 	width: 15vw;
 	max-width: 15rem;
 	height: 100vh;
 	border-radius: 1rem;
-	background-color: #44475acc;
+	background-color: ${mixings.colors.baseBg2}cc;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -25,7 +26,7 @@ export const MenuItem = styled.div<MenuItemProps>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #44475a;
+	background-color: ${mixings.colors.baseBg2};
 	border-radius: 0.8rem 0 0 0.8rem;
 
 	${({ logout }): Interpolation<MenuItemProps> =>
@@ -41,7 +42,7 @@ export const MenuItem = styled.div<MenuItemProps>`
 	${({ active }): Interpolation<MenuItemProps> =>
 		active &&
 		css`
-			background-color: #bd93f9cc;
+			background-color: ${mixings.colors.baseBg3}cc;
 		`}
 `;
 
@@ -52,9 +53,8 @@ export const MenuItemButton = styled.button<MenuItemButtonProps>`
 	align-items: center;
 	justify-content: center;
 	margin-right: 0.75rem;
-	background-color: #bd93f9cc;
+	background-color: ${mixings.colors.baseBg3}cc;
 	border-radius: 0.5rem;
-	color: #6cea69;
 	cursor: pointer;
 
 	:hover {
@@ -75,7 +75,7 @@ export const MenuItemButton = styled.button<MenuItemButtonProps>`
 	${({ active }): Interpolation<MenuItemProps> =>
 		active &&
 		css`
-			background-color: #ff5555;
-			color: #ffffff;
+			background-color: ${mixings.colors.primaryColor};
+			color: ${mixings.colors.contrast1};
 		`}
 `;

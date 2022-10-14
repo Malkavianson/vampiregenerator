@@ -1,3 +1,4 @@
+import mixings from "../../assets/styles/mixins";
 import styled from "styled-components";
 
 export const SettingsContent = styled.main`
@@ -13,10 +14,10 @@ export const SettingsContent = styled.main`
 export const ToggleButtom = styled.button`
 	height: 3em;
 	width: 9em;
-	background: #ff5;
+	background: ${mixings.colors.secondaryColor};
 	border: none;
 	border-radius: 2em;
-	font-family: "Modern Antiqua", cursive;
+	font-family: ${mixings.constants.FontFamily};
 	font-size: 4em;
 	margin-bottom: 5rem;
 	cursor: pointer;
@@ -29,10 +30,10 @@ export const ToggleButtom = styled.button`
 export const SubmitButtom = styled.button`
 	height: 3em;
 	width: 9em;
-	background: #f55;
+	background: ${mixings.colors.primaryColor};
 	border: none;
 	border-radius: 2em;
-	font-family: "Modern Antiqua", cursive;
+	font-family: ${mixings.constants.FontFamily};
 	font-size: 6em;
 	margin-bottom: 5rem;
 	cursor: pointer;
@@ -56,6 +57,6 @@ export const FormContent = styled.div`
 	}
 	span {
 		font-size: 3rem;
-		color: #aaa;
+		color: ${mixings.colors.textColor};
 	}
 `;

@@ -50,14 +50,17 @@ export interface CurrentUser {
 }
 
 export interface CssColors {
-	primaryColor: string;
-	secondaryColor: string;
-	primaryColorOpacity: string;
-	shadowColor: string;
 	baseBg1: string;
 	baseBg2: string;
-	baseForm: string;
+	baseBg3: string;
 	baseLine: string;
+	contrast0: string;
+	contrast1: string;
+	menuItemBtnS: string;
+	primaryColor: string;
+	primaryColorOpacity: string;
+	secondaryColor: string;
+	shadowColor: string;
 	textColor: string;
 	textLighter: string;
 	textLight: string;
@@ -67,12 +70,6 @@ export interface CssColors {
 
 export interface CssConstants {
 	FontFamily: string;
-	logoFontSize: string;
-	logoLineHeight: string;
-	headingFontSize: string;
-	headingLineHeight: string;
-	bodyFontSize: string;
-	bodyLineHeight: string;
 }
 
 export interface MenuProps {

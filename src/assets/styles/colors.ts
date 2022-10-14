@@ -1,19 +1,27 @@
 import { CssColors } from "../../types/interfaces";
 
 export const colors: CssColors = {
+	baseBg1: "#282a36",
+	baseBg2: "#44475a",
+	baseBg3: "#bd93f9",
+
+	baseLine: "#393C49",
+
+	contrast0: "#000000",
+	contrast1: "#ffffff",
+
+	menuItemBtnS: "#6cea69",
+
 	primaryColor: "#ff5555",
-	secondaryColor: "#E26B6B",
 
 	primaryColorOpacity: "rgba(98, 114, 164, 0.4)",
 
+	secondaryColor: "#ffff55",
+
 	shadowColor: "#6272a4",
 
-	baseBg1: "#282A36",
-	baseBg2: "#1F1D2B",
-	baseForm: "#2D303E",
-	baseLine: "#393C49",
+	textColor: "#aaaaaa",
 
-	textColor: "#f8f8f2",
 	textLighter: "#E0E6E9",
 	textLight: "#ABBBC2",
 	textNeutral: "#44475a",

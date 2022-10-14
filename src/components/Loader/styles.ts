@@ -1,13 +1,14 @@
+import mixings from "src/assets/styles/mixins";
 import styled, { keyframes } from "styled-components";
 
 const twink = keyframes`
 	from {
-		fill: #000;
-		stroke: #fff;
+		fill: ${mixings.colors.contrast0};
+		stroke: ${mixings.colors.contrast1};
 	}
 	to {
-		fill: #fff;
-		stroke: #000;
+		fill: ${mixings.colors.contrast0};
+		stroke: ${mixings.colors.contrast1};
 	}
 `;
 
