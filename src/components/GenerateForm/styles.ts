@@ -5,8 +5,8 @@ export const GenerateContainer = styled.div`
 	width: 100%;
 	height: 100vh;
 	display: flex;
-	background: #282a36;
-	color: #f8f8f2;
+	background: ${mixings.colors.baseBg1};
+	color: ${mixings.colors.contrast1};
 `;
 
 export const GenerateContentContainer = styled.div`
@@ -46,7 +46,7 @@ export const GenerateContentCards = styled.main`
 
 export const NewKindred = styled.section`
 	width: 80%;
-	color: black;
+	color: ${mixings.colors.contrast0};
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -98,7 +98,7 @@ export const OnlyLogged = styled.div`
 	text-align: center;
 	text-decoration: underline;
 	text-underline-offset: 2px;
-	background: #f1f1f1bb;
+	background: ${mixings.colors.contrast1}bb;
 	cursor: pointer;
 `;
 

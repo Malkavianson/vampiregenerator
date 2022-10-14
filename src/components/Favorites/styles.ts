@@ -1,3 +1,4 @@
+import mixings from "src/assets/styles/mixins";
 import styled from "styled-components";
 
 export const FavoritesPool = styled.div`
@@ -5,7 +6,7 @@ export const FavoritesPool = styled.div`
 	height: auto;
 	min-height: calc(100% - 3rem);
 	padding: 3rem 0;
-	color: black;
+	color: ${mixings.colors.contrast0};
 	display: flex;
 	gap: 2em;
 	flex-direction: row;

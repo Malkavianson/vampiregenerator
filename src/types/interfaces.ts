@@ -50,20 +50,16 @@ export interface CurrentUser {
 }
 
 export interface CssColors {
-	baseBg1S: string;
-	baseBg1T: string;
-	baseBgMT: string;
+	baseBg1: string;
+	baseBg2: string;
+	baseBg3: string;
 	baseLine: string;
-	contrast0S: string;
-	contrast0T: string;
-	contrast1S: string;
-	contrast1T: string;
+	contrast0: string;
+	contrast1: string;
 	menuItemBtnS: string;
-	primaryColorT: string;
-	primaryColorS: string;
+	primaryColor: string;
 	primaryColorOpacity: string;
-	secondaryColorT: string;
-	secondaryColorS: string;
+	secondaryColor: string;
 	shadowColor: string;
 	textColor: string;
 	textLighter: string;

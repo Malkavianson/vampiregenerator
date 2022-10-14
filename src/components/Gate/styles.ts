@@ -4,7 +4,7 @@ import mixings from "../../assets/styles/mixins";
 export const SwicherButtom = styled.button`
 	height: 3em;
 	width: 10em;
-	background: #f55;
+	background: ${mixings.colors.primaryColor};
 	border: none;
 	border-radius: 1em;
 	font-family: ${mixings.constants.FontFamily};
@@ -19,7 +19,7 @@ export const SwicherButtom = styled.button`
 export const SubmitButtom = styled.button`
 	height: 3em;
 	width: 10em;
-	background: #f55;
+	background: ${mixings.colors.primaryColor};
 	border: none;
 	border-radius: 2em;
 	font-family: ${mixings.constants.FontFamily};

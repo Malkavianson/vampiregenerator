@@ -104,7 +104,8 @@ export const KindredSheet = styled.article`
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: 2rem;
-	background: white;
+	color: ${mixings.colors.contrast0};
+	background: ${mixings.colors.contrast1};
 	padding-bottom: 1em;
 	user-select: none;
 
