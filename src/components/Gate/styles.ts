@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import mixings from "../../assets/styles/mixins";
 
 export const SwicherButtom = styled.button`
 	height: 3em;
@@ -6,7 +7,7 @@ export const SwicherButtom = styled.button`
 	background: #f55;
 	border: none;
 	border-radius: 1em;
-	font-family: "Modern Antiqua", cursive;
+	font-family: ${mixings.constants.FontFamily};
 	font-size: 4em;
 	cursor: pointer;
 
@@ -21,7 +22,7 @@ export const SubmitButtom = styled.button`
 	background: #f55;
 	border: none;
 	border-radius: 2em;
-	font-family: "Modern Antiqua", cursive;
+	font-family: ${mixings.constants.FontFamily};
 	font-size: 6em;
 	cursor: pointer;
 

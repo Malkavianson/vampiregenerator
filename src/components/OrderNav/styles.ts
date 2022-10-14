@@ -1,3 +1,4 @@
+import mixings from "../../assets/styles/mixins";
 import styled from "styled-components";
 
 export const CategorySelector = styled.div`
@@ -6,10 +7,10 @@ export const CategorySelector = styled.div`
 		flex-direction: column;
 
 		select {
-			font-family: "Modern Antiqua", cursive;
+			font-family: ${mixings.constants.FontFamily};
 
 			option {
-				font-family: "Modern Antiqua", cursive;
+				font-family: ${mixings.constants.FontFamily};
 			}
 		}
 	}

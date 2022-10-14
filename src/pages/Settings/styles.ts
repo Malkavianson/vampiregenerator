@@ -1,3 +1,4 @@
+import mixings from "../../assets/styles/mixins";
 import styled from "styled-components";
 
 export const SettingsContent = styled.main`
@@ -16,7 +17,7 @@ export const ToggleButtom = styled.button`
 	background: #ff5;
 	border: none;
 	border-radius: 2em;
-	font-family: "Modern Antiqua", cursive;
+	font-family: ${mixings.constants.FontFamily};
 	font-size: 4em;
 	margin-bottom: 5rem;
 	cursor: pointer;
@@ -32,7 +33,7 @@ export const SubmitButtom = styled.button`
 	background: #f55;
 	border: none;
 	border-radius: 2em;
-	font-family: "Modern Antiqua", cursive;
+	font-family: ${mixings.constants.FontFamily};
 	font-size: 6em;
 	margin-bottom: 5rem;
 	cursor: pointer;
