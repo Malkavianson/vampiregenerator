@@ -3,6 +3,18 @@ import type { Skill } from "../../types/types";
 import { SubTypeTable, SubTypeTBody, SubTypeTBodyCell, SubTypeTBodyRow, SubTypeTHead } from "./styles";
 
 const SubType = ({ subType }: SubTypeProp): JSX.Element => {
+	const dots = (value: number): string => {
+		let res = "";
+		const max = value > 5 ? 10 : 5;
+		for (let i = 0; i < value; i++) {
+			res = res + "●";
+		}
+		for (let i = value; i < max; i++) {
+			res = res + "○";
+		}
+		return res;
+	};
+
 	return (
 		<SubTypeTable>
 			<SubTypeTHead>
@@ -15,7 +27,7 @@ const SubType = ({ subType }: SubTypeProp): JSX.Element => {
 					return (
 						<SubTypeTBodyRow key={i}>
 							<SubTypeTBodyCell>{e.skill}</SubTypeTBodyCell>
-							<SubTypeTBodyCell>{e.value}</SubTypeTBodyCell>
+							<SubTypeTBodyCell>{dots(e.value)}</SubTypeTBodyCell>
 						</SubTypeTBodyRow>
 					);
 				})}

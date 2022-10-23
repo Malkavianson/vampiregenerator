@@ -1,7 +1,7 @@
 import { FaceFramer, KindredArea, KindredHeader, KindredMain, KindredSheet, TypeTable, TypeTBody, TypeTBodyCell, TypeTBodyRow, TypeTHead, TypeTHeadCell, TypeTHeadRow } from "./styles";
 import { useFavorites } from "../../contexts/Favorites.context";
 import { useAuth } from "../../contexts/Account.contexts";
-import type { ApiKindred } from "../../types/interfaces";
+import type { PropKindred } from "../../types/interfaces";
 import { Download, StarSvg } from "../../assets/icons";
 import { useEffect, useRef, useState } from "react";
 import blankKindred from "../../utils/blanKindred";
@@ -10,11 +10,6 @@ import SubType from "../SubType/Index";
 import html2canvas from "html2canvas";
 import { api } from "../../services";
 import { jsPDF } from "jspdf";
-
-interface PropKindred {
-	kindred: ApiKindred;
-	currentKey: number;
-}
 
 const Kindred = ({ kindred, currentKey }: PropKindred): JSX.Element => {
 	const { logged, currentUser } = useAuth();

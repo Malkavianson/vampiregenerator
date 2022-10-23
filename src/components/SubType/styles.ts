@@ -46,6 +46,6 @@ export const SubTypeTBodyCell = styled.td`
 	margin-bottom: 0.25em;
 	font-size: 1.5em;
 	line-height: 1em;
-	inline-size: 12em;
+	inline-size: 8em;
 	overflow-wrap: break-word;
 `;

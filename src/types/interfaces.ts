@@ -72,6 +72,13 @@ export interface CssConstants {
 	FontFamily: string;
 }
 
+export interface DataType {
+	name?: string;
+	email: string;
+	password: string;
+	isAdmin?: boolean;
+}
+
 export interface MenuProps {
 	path: "home" | "settings" | "profile" | "generate" | "login";
 }
@@ -84,6 +91,12 @@ export interface MenuItemProps {
 export interface MenuItemButtonProps {
 	active?: boolean;
 }
+
+export interface PropKindred {
+	kindred: ApiKindred;
+	currentKey: number;
+}
+
 
 export interface SkillSectionAttributeResponse {
 	type: string;

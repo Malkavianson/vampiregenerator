@@ -8,9 +8,11 @@ interface OrderSettingsProviderData {
 	orderBy: string;
 	orderDirection: string;
 	category: string;
+	pageLength: number;
 	setOrderBy: Dispatch<SetStateAction<string>>;
 	setOrderDirection: Dispatch<SetStateAction<string>>;
 	setCategory: Dispatch<SetStateAction<string>>;
+	setPageLenght: Dispatch<SetStateAction<number>>;
 }
 
 const OrderContext = createContext({} as OrderSettingsProviderData);
@@ -22,12 +24,13 @@ export const OrderSettingsProvider = ({ children }: AllProvidersProps): JSX.Elem
 	const [orderBy, setOrderBy] = useState("creation");
 	const [orderDirection, setOrderDirection] = useState("desc");
 	const [category, setCategory] = useState("all");
+	const [pageLength, setPageLenght] = useState(10);
 
 	useEffect(() => {
 		if (logged) handleGetFavorites();
 	}, [orderBy, orderDirection, category]);
 
-	return <OrderContext.Provider value={{ orderBy, orderDirection, category, setOrderBy, setOrderDirection, setCategory }}>{children}</OrderContext.Provider>;
+	return <OrderContext.Provider value={{ orderBy, orderDirection, category, pageLength, setOrderBy, setOrderDirection, setCategory, setPageLenght }}>{children}</OrderContext.Provider>;
 };
 
 export const useOrderSettings = (): OrderSettingsProviderData => useContext(OrderContext);
