@@ -1,9 +1,6 @@
 import mixings from "src/assets/styles/mixins";
+import { KindredAreaProps } from "src/types/interfaces";
 import styled, { css, FlattenSimpleInterpolation } from "styled-components";
-
-interface KindredAreaProps {
-	isFav?: boolean;
-}
 
 export const FaceFramer = styled.div`
 	position: absolute;

@@ -1,6 +1,6 @@
+import { SubTypeTable, SubTypeTBody, SubTypeTBodyCell, SubTypeTBodyRow, SubTypeTHead } from "./styles";
 import type { SubTypeProp } from "../../types/interfaces";
 import type { Skill } from "../../types/types";
-import { SubTypeTable, SubTypeTBody, SubTypeTBodyCell, SubTypeTBodyRow, SubTypeTHead } from "./styles";
 
 const SubType = ({ subType }: SubTypeProp): JSX.Element => {
 	const dots = (value: number): string => {

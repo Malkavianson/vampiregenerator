@@ -1,7 +1,7 @@
 import { useFavorites } from "../../contexts/Favorites.context";
 import { useAuth } from "../../contexts/Account.contexts";
-import { useEffect } from "react";
 import { FavoritesPool } from "./styles";
+import { useEffect } from "react";
 import Kindred from "../Kindred";
 
 const Favorites = (): JSX.Element => {

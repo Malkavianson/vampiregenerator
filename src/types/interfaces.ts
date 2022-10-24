@@ -34,19 +34,18 @@ export interface Auth {
 	user: CurrentUser;
 }
 
+export interface AuthProviderData {
+	logged: boolean;
+	login: (params: Auth) => void;
+	logout: () => void;
+	currentUser: Auth | undefined;
+}
+
 export interface AxiosKindredData {
 	name?: string;
 	player?: string;
 	clan?: string;
 	generation?: number;
-}
-
-export interface CurrentUser {
-	createdAt: string;
-	email: string;
-	id: string;
-	name: string;
-	updatedAt: string;
 }
 
 export interface CssColors {
@@ -72,15 +71,38 @@ export interface CssConstants {
 	FontFamily: string;
 }
 
+export interface CurrentUser {
+	createdAt: string;
+	email: string;
+	id: string;
+	name: string;
+	updatedAt: string;
+}
+
 export interface DataType {
 	name?: string;
-	email: string;
-	password: string;
+	email?: string;
+	password?: string;
 	isAdmin?: boolean;
 }
 
-export interface MenuProps {
-	path: "home" | "settings" | "profile" | "generate" | "login";
+export interface FavoritesProviderData {
+	favorites: ApiFavorites[];
+	handleGetFavorites: () => void;
+}
+
+export interface KindredAreaProps {
+	isFav?: boolean;
+}
+
+export interface KindredProviderData {
+	status: boolean;
+	kindreds: ApiKindred[];
+	handleGetServerStatus: () => void;
+	toggleCategory: () => void;
+	toggleOrderBy: () => void;
+	currentPage: number;
+	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface MenuItemProps {
@@ -92,17 +114,13 @@ export interface MenuItemButtonProps {
 	active?: boolean;
 }
 
+export interface MenuProps {
+	path: "home" | "settings" | "profile" | "generate" | "login";
+}
+
 export interface PropKindred {
 	kindred: ApiKindred;
 	currentKey: number;
-}
-
-
-export interface SkillSectionAttributeResponse {
-	type: string;
-	physical: SkillGroupResponse;
-	social: SkillGroupResponse;
-	mental: SkillGroupResponse;
 }
 
 export interface SkillSectionAbilitiesResponse {
@@ -111,11 +129,19 @@ export interface SkillSectionAbilitiesResponse {
 	skills: SkillGroupResponse;
 	knowledges: SkillGroupResponse;
 }
+
 export interface SkillSectionAdvantagesResponse {
 	type: string;
 	disciplines: SkillGroupResponse;
 	backgrounds: SkillGroupResponse;
 	virtues: SkillGroupResponse;
+}
+
+export interface SkillSectionAttributeResponse {
+	type: string;
+	physical: SkillGroupResponse;
+	social: SkillGroupResponse;
+	mental: SkillGroupResponse;
 }
 
 export interface SkillGroupResponse {

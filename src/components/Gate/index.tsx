@@ -1,7 +1,7 @@
-import { error, validateEmail, validateName, validatePassword } from "src/utils/validation.tools";
+import { error, validateEmail, validateName, validatePassword } from "../../utils/validation.tools";
 import { useAuth } from "../../contexts/Account.contexts";
 import { SubmitButtom, SwicherButtom } from "./styles";
-import { DataType } from "src/types/interfaces";
+import { DataType } from "../../types/interfaces";
 import { api } from "../../services";
 import { useState } from "react";
 import Input from "../Input";

@@ -1,12 +1,7 @@
+import { AllProvidersProps, ApiFavorites, FavoritesProviderData } from "../types/interfaces";
 import { createContext, useContext, useEffect, useState } from "react";
-import { AllProvidersProps, ApiFavorites } from "../types/interfaces";
-import { api } from "../services";
 import { useAuth } from "./Account.contexts";
-
-interface FavoritesProviderData {
-	favorites: ApiFavorites[];
-	handleGetFavorites: () => void;
-}
+import { api } from "../services";
 
 const FavoriteContext = createContext({} as FavoritesProviderData);
 

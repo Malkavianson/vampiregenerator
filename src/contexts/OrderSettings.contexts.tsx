@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import type { Dispatch, SetStateAction } from "react";
 import { AllProvidersProps } from "../types/interfaces";
-import { useAuth } from "./Account.contexts";
+import type { Dispatch, SetStateAction } from "react";
 import { useFavorites } from "./Favorites.context";
+import { useAuth } from "./Account.contexts";
 
 interface OrderSettingsProviderData {
 	orderBy: string;
