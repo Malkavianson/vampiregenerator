@@ -1,13 +1,13 @@
-import type { AxiosKindredData } from "../../types/interfaces";
-import blankKindred from "../../utils/blanKindred";
 import { GenerateContentCards, GenerateContentCardsForm, GenerateContentContainer, GenerateContentHeader, Homies, NewKindred, OnlyLogged, Public, PublicButton, Values } from "./styles";
+import type { AxiosKindredData } from "../../types/interfaces";
+import { useAuth } from "../../contexts/Account.contexts";
 import { ButtonGenerate } from "../../assets/icons";
+import blankKindred from "../../utils/blanKindred";
 import { api } from "../../services";
 import { useState } from "react";
 import Kindred from "../Kindred";
 import Loader from "../Loader";
 import Input from "../Input";
-import { useAuth } from "../../contexts/Account.contexts";
 import { Link } from "react-router-dom";
 
 const Form = (): JSX.Element => {

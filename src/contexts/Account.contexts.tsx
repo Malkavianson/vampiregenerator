@@ -1,14 +1,7 @@
+import type { AllProvidersProps, Auth, AuthProviderData } from "../types/interfaces";
 import { createContext, useContext, useState, useEffect } from "react";
-import type { AllProvidersProps, Auth } from "../types/interfaces";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services";
-
-interface AuthProviderData {
-	logged: boolean;
-	login: (params: Auth) => void;
-	logout: () => void;
-	currentUser: Auth | undefined;
-}
 
 const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 

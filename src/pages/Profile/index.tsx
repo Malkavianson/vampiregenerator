@@ -1,8 +1,9 @@
 import { Container, ContentContainer, ContentHeader } from "../styles";
-import { ProfileContentCards } from "./styles";
 import Favorites from "src/components/Favorites";
-// import OrderNav from "../../components/OrderNav";
+import { ProfileContentCards } from "./styles";
 import Menu from "../../components/Menu";
+
+// import OrderNav from "../../components/OrderNav";
 
 const Profile = (): JSX.Element => {
 	return (

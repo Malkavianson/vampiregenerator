@@ -101,7 +101,7 @@ const OrderNav = (): JSX.Element => {
 						}}
 					>
 						<option
-							defaultValue="all"
+							value="all"
 							id="select_clan-0"
 						></option>
 						<option

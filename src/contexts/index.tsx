@@ -1,5 +1,6 @@
 import { OrderSettingsProvider } from "./OrderSettings.contexts";
 import { FavoritesProvider } from "./Favorites.context";
+import { KindredProvider } from "./kindreds.contexts";
 import { AuthProvider } from "./Account.contexts";
 import { BrowserRouter } from "react-router-dom";
 import { ReactNode } from "react";
@@ -13,7 +14,9 @@ const Providers = ({ children }: ProvidersProps): JSX.Element => {
 		<BrowserRouter>
 			<AuthProvider>
 				<FavoritesProvider>
-					<OrderSettingsProvider>{children}</OrderSettingsProvider>
+					<OrderSettingsProvider>
+						<KindredProvider>{children}</KindredProvider>
+					</OrderSettingsProvider>
 				</FavoritesProvider>
 			</AuthProvider>
 		</BrowserRouter>

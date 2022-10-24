@@ -1,43 +1,12 @@
-import { Container, ContentContainer, ContentHeader } from "../styles";
 import { FormContent, SettingsContent, SubmitButtom, ToggleButtom } from "./styles";
-import { useAuth } from "src/contexts/Account.contexts";
-import Input from "src/components/Input";
+import { validateName, validatePassword } from "../../utils/validation.tools";
+import { Container, ContentContainer, ContentHeader } from "../styles";
+import { useAuth } from "../../contexts/Account.contexts";
+import { DataType } from "../../types/interfaces";
+import Input from "../../components/Input";
 import Menu from "../../components/Menu";
-import toast from "react-hot-toast";
-import { useState } from "react";
 import { api } from "src/services";
-
-interface DataType {
-	name?: string;
-	password?: string;
-}
-
-const error = (message: string): string => {
-	return toast.error(message, {
-		style: {
-			borderRadius: "1rem",
-			fontSize: "3rem",
-			fontFamily: "'Roboto Regular', Arial",
-		},
-	});
-};
-
-const validateName = (name: string): boolean | void => {
-	if (Boolean(name)) {
-		return Boolean(name);
-	} else {
-		error("Name must be filled");
-	}
-};
-
-const validatePassword = (pw: string): boolean | void => {
-	const isPw = /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
-	if (isPw.test(pw) && pw.length > 7) {
-		return isPw.test(pw);
-	} else {
-		error("Must have a minimal of 8 characters, one uppercase, one lowercase, one symbol and one number.");
-	}
-};
+import { useState } from "react";
 
 const Settings = (): JSX.Element => {
 	const { currentUser, logged, logout } = useAuth();
@@ -68,8 +37,6 @@ const Settings = (): JSX.Element => {
 						},
 					};
 					const patch = await api.patch(`/users/${currentUser.user.id}`, data, header).then(res => res);
-					console.log("Patched");
-					console.log(patch);
 					if (patch.status === 200) {
 						logout();
 					}
@@ -140,7 +107,6 @@ const Settings = (): JSX.Element => {
 												},
 											};
 											api.delete(`/users/${currentUser.user.id}`, headers).then(res => {
-												console.log(res);
 												if (res.status === 204) {
 													logout();
 												}

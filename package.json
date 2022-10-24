@@ -40,7 +40,8 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"production": "yarn format && yarn start",
+		"prodev": "yarn lint && yarn format && yarn start",
+		"lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
 		"format": "prettier -w .",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
