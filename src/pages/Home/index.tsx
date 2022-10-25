@@ -43,9 +43,12 @@ const Home = (): JSX.Element => {
 	}, [scrollPage]);
 
 	useEffect(() => {
-		handleGetServerStatus();
 		if (logged) handleGetFavorites();
 	}, [logged, kindreds]);
+
+	useEffect(() => {
+		handleGetServerStatus();
+	}, [logged]);
 
 	return (
 		<Container>
