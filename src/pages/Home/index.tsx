@@ -12,7 +12,7 @@ import { HomeContentCards } from "./styles";
 import Menu from "../../components/Menu";
 
 const Home = (): JSX.Element => {
-	const { endOfPage, currentPage, setCurrentPage, handleGetServerStatus } = useKindred();
+	const { kindreds, endOfPage, currentPage, setCurrentPage, handleGetServerStatus } = useKindred();
 	const { handleGetFavorites } = useFavorites();
 	const { logged } = useAuth();
 
@@ -45,7 +45,7 @@ const Home = (): JSX.Element => {
 	useEffect(() => {
 		handleGetServerStatus();
 		if (logged) handleGetFavorites();
-	}, [logged]);
+	}, [logged, kindreds]);
 
 	return (
 		<Container>
