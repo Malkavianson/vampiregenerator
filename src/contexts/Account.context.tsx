@@ -14,12 +14,14 @@ export const AuthProvider = ({ children }: AllProvidersProps): JSX.Element => {
 		localStorage.setItem("token", token);
 		localStorage.setItem("user", JSON.stringify(user));
 		setLogged(true);
+		navigate("/");
 		navigate(0);
 	};
 
 	const logout = (): void => {
 		localStorage.clear();
 		setLogged(false);
+		navigate("/login");
 		navigate(0);
 	};
 

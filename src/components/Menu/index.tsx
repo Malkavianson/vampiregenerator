@@ -57,9 +57,8 @@ const Menu = ({ path }: MenuProps): JSX.Element => {
 			{logged && (
 				<MenuItem logout>
 					<MenuItemButton
-						onClick={(e): void => {
+						onClick={(): void => {
 							logout();
-							e.stopPropagation();
 						}}
 					>
 						<LogOut />
