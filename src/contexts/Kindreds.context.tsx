@@ -43,6 +43,7 @@ export const KindredProvider = ({ children }: AllProvidersProps): JSX.Element =>
 		}
 	};
 	const handleGetServerStatus = (): void => {
+		setKindreds([]);
 		setCurrentPage(1);
 		api.get("/status").then(res => {
 			if (res.status === 200) {

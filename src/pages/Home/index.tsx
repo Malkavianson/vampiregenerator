@@ -12,7 +12,7 @@ import { HomeContentCards } from "./styles";
 import Menu from "../../components/Menu";
 
 const Home = (): JSX.Element => {
-	const { endOfPage, currentPage, setCurrentPage } = useKindred();
+	const { endOfPage, currentPage, setCurrentPage, handleGetServerStatus } = useKindred();
 	const { handleGetFavorites } = useFavorites();
 	const { logged } = useAuth();
 
@@ -40,10 +40,10 @@ const Home = (): JSX.Element => {
 
 	useEffect(() => {
 		if (scrollPage) setCurrentPage(currentPage + 1);
-		console.log(scrollPage, currentPage);
 	}, [scrollPage]);
 
 	useEffect(() => {
+		handleGetServerStatus();
 		if (logged) handleGetFavorites();
 	}, [logged]);
 
