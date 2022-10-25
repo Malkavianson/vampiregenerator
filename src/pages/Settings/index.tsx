@@ -1,6 +1,6 @@
 import { FormContent, SettingsContent, SubmitButtom, ToggleButtom } from "./styles";
 import { validateName, validatePassword } from "../../utils/validation.tools";
-import { useAuth } from "../../contexts/Account.contexts";
+import { useAuth } from "../../contexts/Account.context";
 import TitleContent from "../../components/TitleContent";
 import { Container, ContentContainer } from "../styles";
 import { DataType } from "../../types/interfaces";

@@ -1,7 +1,7 @@
 import { GenerateContentCards, GenerateContentCardsForm, Homies, NewKindred, OnlyLogged, Public, PublicButton, Values } from "./styles";
 import type { AxiosKindredData } from "../../types/interfaces";
 import { ButtonGenerate } from "../../assets/icons";
-import { useAuth } from "../../contexts/Account.contexts";
+import { useAuth } from "../../contexts/Account.context";
 import blankKindred from "../../utils/blanKindred";
 import { api } from "../../services";
 import { useState } from "react";

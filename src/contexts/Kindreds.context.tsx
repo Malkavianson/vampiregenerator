@@ -1,9 +1,9 @@
 import { AllProvidersProps, KindredProviderData } from "../types/interfaces";
 import { createContext, useContext, useEffect, useState } from "react";
-import { useOrderSettings } from "./OrderSettings.contexts";
+import { useOrderSettings } from "./OrderSettings.context";
 import { useFavorites } from "./Favorites.context";
 import blankKindred from "src/utils/blanKindred";
-import { useAuth } from "./Account.contexts";
+import { useAuth } from "./Account.context";
 import { api } from "../services";
 
 const KindredContext = createContext({} as KindredProviderData);

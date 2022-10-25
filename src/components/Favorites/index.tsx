@@ -1,5 +1,5 @@
 import { useFavorites } from "../../contexts/Favorites.context";
-import { useAuth } from "../../contexts/Account.contexts";
+import { useAuth } from "../../contexts/Account.context";
 import { FavoritesPool } from "./styles";
 import { useEffect } from "react";
 import Kindred from "../Kindred";

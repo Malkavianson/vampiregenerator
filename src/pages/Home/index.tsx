@@ -1,4 +1,4 @@
-import { useKindred } from "../../contexts/Kindreds.contexts";
+import { useKindred } from "../../contexts/Kindreds.context";
 import { Container, ContentContainer } from "../styles";
 import TitleContent from "src/components/TitleContent";
 import Autoscroll from "../../components/AutoScroll";
