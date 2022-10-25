@@ -35,7 +35,7 @@ const Gate = (): JSX.Element => {
 								delete data.name;
 								const loginAfterRegister = await api.post(`/auth/login`, data).then(res => res);
 								switch (loginAfterRegister.status) {
-									case 201:
+									case 200:
 										login(loginAfterRegister.data);
 										break;
 
