@@ -40,7 +40,7 @@ export const KindredArea = styled.section<KindredAreaProps>`
 	${({ isFav }): false | FlattenSimpleInterpolation | undefined =>
 		isFav &&
 		css`
-			&:hover > ${FaceFramer} {
+			& > ${FaceFramer} {
 				div {
 					svg {
 						path#9 {
@@ -55,7 +55,7 @@ export const KindredArea = styled.section<KindredAreaProps>`
 			}
 		`}
 
-	&:hover > ${FaceFramer} {
+	& > ${FaceFramer} {
 		background: ${mixings.colors.contrast0}11;
 		z-index: 1;
 

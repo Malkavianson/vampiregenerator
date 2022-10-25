@@ -1,24 +1,20 @@
 import { AllProvidersProps, KindredProviderData } from "../types/interfaces";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useOrderSettings } from "./OrderSettings.context";
-import { useFavorites } from "./Favorites.context";
 import blankKindred from "src/utils/blanKindred";
-import { useAuth } from "./Account.context";
 import { api } from "../services";
 
 const KindredContext = createContext({} as KindredProviderData);
 
 export const KindredProvider = ({ children }: AllProvidersProps): JSX.Element => {
-	const { logged } = useAuth();
-	const { handleGetFavorites } = useFavorites();
 	const { orderBy, orderDirection, category, pageLength } = useOrderSettings();
 
 	const [allKindreds, setAllKindreds] = useState([blankKindred]);
-	const [endOfPage, setEndOfPage] = useState(false);
 	const [kindredsBK, setKindredsBK] = useState([blankKindred]);
 	const [kindreds, setKindreds] = useState([blankKindred]);
 	const [lastValidPage, setLastValidPage] = useState(1);
 	const [currentPage, setCurrentPage] = useState(1);
+	const [endOfPage, setEndOfPage] = useState(false);
 	const [status, getStatus] = useState(false);
 
 	const handleGetKindreds = (): void => {
@@ -37,7 +33,6 @@ export const KindredProvider = ({ children }: AllProvidersProps): JSX.Element =>
 					setCurrentPage(lastValidPage);
 				}
 			});
-			if (logged) handleGetFavorites();
 		}
 	};
 	const handleGetAllKindreds = (): void => {
@@ -130,7 +125,6 @@ export const KindredProvider = ({ children }: AllProvidersProps): JSX.Element =>
 	};
 
 	useEffect(() => {
-		if (logged) handleGetFavorites();
 		handleGetKindreds();
 	}, [currentPage]);
 
@@ -139,7 +133,6 @@ export const KindredProvider = ({ children }: AllProvidersProps): JSX.Element =>
 	}, [status]);
 
 	useEffect(() => {
-		if (logged) handleGetFavorites();
 		handleGetKindreds();
 	}, [status]);
 

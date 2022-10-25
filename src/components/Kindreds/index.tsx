@@ -1,5 +1,7 @@
 import { useOrderSettings } from "../../contexts/OrderSettings.context";
+import { useFavorites } from "../../contexts/Favorites.context";
 import { useKindred } from "../../contexts/Kindreds.context";
+import { useAuth } from "../../contexts/Account.context";
 import { KindredsPool, LoadingTitle } from "./styles";
 import { useEffect } from "react";
 import Kindred from "../Kindred";
@@ -7,6 +9,8 @@ import Kindred from "../Kindred";
 const Kindreds = (): JSX.Element => {
 	const { orderBy, orderDirection, category } = useOrderSettings();
 	const { status, kindreds, handleGetServerStatus, toggleCategory, toggleOrderBy } = useKindred();
+	const { logged } = useAuth();
+	const { handleGetFavorites } = useFavorites();
 
 	useEffect(() => {
 		toggleOrderBy();
@@ -17,6 +21,7 @@ const Kindreds = (): JSX.Element => {
 
 	useEffect(() => {
 		handleGetServerStatus();
+		if (logged) handleGetFavorites();
 	}, []);
 
 	return (

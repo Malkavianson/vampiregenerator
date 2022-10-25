@@ -89,6 +89,7 @@ export interface DataType {
 export interface FavoritesProviderData {
 	favorites: ApiFavorites[];
 	handleGetFavorites: () => void;
+	favThis: (is: string, isFav: boolean) => void;
 }
 
 export interface KindredAreaProps {
