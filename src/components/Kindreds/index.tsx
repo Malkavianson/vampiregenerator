@@ -6,7 +6,7 @@ import Kindred from "../Kindred";
 
 const Kindreds = (): JSX.Element => {
 	const { orderBy, orderDirection, category } = useOrderSettings();
-	const { status, kindreds, handleGetServerStatus, toggleCategory, toggleOrderBy } = useKindred();
+	const { status, kindreds, toggleCategory, toggleOrderBy } = useKindred();
 
 	useEffect(() => {
 		toggleOrderBy();
@@ -14,10 +14,6 @@ const Kindreds = (): JSX.Element => {
 	useEffect(() => {
 		toggleCategory();
 	}, [category]);
-
-	useEffect(() => {
-		handleGetServerStatus();
-	}, []);
 
 	return (
 		<>

@@ -1,48 +1,23 @@
 import { FaceFramer, KindredArea, KindredHeader, KindredMain, KindredSheet, TypeTable, TypeTBody, TypeTBodyCell, TypeTBodyRow, TypeTHead, TypeTHeadCell, TypeTHeadRow } from "./styles";
 import { useFavorites } from "../../contexts/Favorites.context";
-import { useAuth } from "../../contexts/Account.context";
 import type { PropKindred } from "../../types/interfaces";
+import { useAuth } from "../../contexts/Account.context";
 import { Download, StarSvg } from "../../assets/icons";
+import handleDownloadPdf from "../../utils/pdf.tools";
 import { useEffect, useRef, useState } from "react";
 import blankKindred from "../../utils/blanKindred";
 import loader from "../../assets/icons/loader.png";
 import SubType from "../SubType/Index";
-import html2canvas from "html2canvas";
-import { api } from "../../services";
-import { jsPDF } from "jspdf";
 
 const Kindred = ({ kindred, currentKey }: PropKindred): JSX.Element => {
-	const { logged, currentUser } = useAuth();
-	const { favorites, handleGetFavorites } = useFavorites();
+	const { favorites, favThis } = useFavorites();
+	const { logged } = useAuth();
 
 	const printRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-	const [isFav, setIsFav] = useState(false);
+
 	const [toDownload, setToDownload] = useState(false);
+	const [isFav, setIsFav] = useState(false);
 	const [toFav, setToFav] = useState(false);
-
-	const handleDownloadPdf = async (): Promise<void> => {
-		const pdf = new jsPDF({
-			orientation: "p",
-			unit: "mm",
-			format: "a4",
-			putOnlyUsedFonts: true,
-		});
-
-		const element = printRef.current;
-		const canvas = await html2canvas(element, { allowTaint: true, useCORS: true });
-
-		const data = canvas.toDataURL("image/png");
-
-		const imgProperties = pdf.getImageProperties(data);
-
-		const pdfWidth = pdf.internal.pageSize.getWidth();
-		const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-		const pdfName = `${kindred.name}_${kindred.kindredId}_https://vtmgenerator.vercel.app/_by:MalkavianSon`;
-
-		pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
-
-		pdf.save(`${pdfName}.pdf`);
-	};
 
 	const handleFavorite = (): void => {
 		if (favorites.some(e => e.kindredId === kindred.id)) {
@@ -52,51 +27,10 @@ const Kindred = ({ kindred, currentKey }: PropKindred): JSX.Element => {
 		}
 	};
 
-	const favThis = (): void => {
-		if (logged && currentUser) {
-			const token = localStorage.getItem("token");
-			switch (isFav) {
-				case true:
-					const favId = favorites.find(e => e.kindredId === kindred.id);
-					if (favId) {
-						const deleteData = {
-							headers: {
-								Authorization: `Bearer ${token}`,
-							},
-							data: {
-								favoriteId: favId.id,
-							},
-						};
-						api.delete(`/favorites`, deleteData).then(res => {
-							if (res.status === 204) {
-								handleGetFavorites();
-							}
-						});
-					}
-					break;
-				case false:
-					const headers = {
-						headers: {
-							Authorization: `Bearer ${token}`,
-						},
-					};
-
-					const body = {
-						userId: currentUser.user.id,
-						kindredId: kindred.id,
-					};
-					api.post(`/favorites`, body, headers).then(res => {
-						if (res.status === 201) {
-							handleGetFavorites();
-						}
-					});
-					break;
-			}
-		}
-	};
-
 	useEffect(() => {
-		if (logged) handleFavorite();
+		if (logged) {
+			handleFavorite();
+		}
 	}, [favorites]);
 
 	switch (kindred) {
@@ -215,7 +149,7 @@ const Kindred = ({ kindred, currentKey }: PropKindred): JSX.Element => {
 									<div
 										onClick={(): void => {
 											setToFav(!toFav);
-											favThis();
+											favThis(kindred.id, isFav);
 										}}
 									>
 										<StarSvg />
@@ -241,7 +175,7 @@ const Kindred = ({ kindred, currentKey }: PropKindred): JSX.Element => {
 								<div
 									onClick={(e): void => {
 										setToDownload(!toDownload);
-										handleDownloadPdf();
+										handleDownloadPdf(printRef, kindred.name, kindred.kindredId);
 										e.stopPropagation();
 									}}
 								>

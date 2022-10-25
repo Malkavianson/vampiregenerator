@@ -1,4 +1,6 @@
+import { useFavorites } from "../../contexts/Favorites.context";
 import { useKindred } from "../../contexts/Kindreds.context";
+import { useAuth } from "../../contexts/Account.context";
 import { Container, ContentContainer } from "../styles";
 import TitleContent from "src/components/TitleContent";
 import Autoscroll from "../../components/AutoScroll";
@@ -10,7 +12,10 @@ import { HomeContentCards } from "./styles";
 import Menu from "../../components/Menu";
 
 const Home = (): JSX.Element => {
-	const { endOfPage, currentPage, setCurrentPage } = useKindred();
+	const { endOfPage, currentPage, setCurrentPage, handleGetServerStatus } = useKindred();
+	const { handleGetFavorites } = useFavorites();
+	const { logged } = useAuth();
+
 	const [scrollPage, setScrollPage] = useState(false);
 
 	const target = document.querySelector("#autoscrolldiv");
@@ -30,12 +35,17 @@ const Home = (): JSX.Element => {
 	const observer = new IntersectionObserver(callback, options);
 
 	if (target) {
-		requestIdleCallback(() => observer.observe(target), { timeout: 5000 });
+		requestIdleCallback(() => observer.observe(target), { timeout: 3000 });
 	}
 
 	useEffect(() => {
 		if (scrollPage) setCurrentPage(currentPage + 1);
 	}, [scrollPage]);
+
+	useEffect(() => {
+		handleGetServerStatus();
+		if (logged) handleGetFavorites();
+	}, [logged]);
 
 	return (
 		<Container>

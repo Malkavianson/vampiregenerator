@@ -6,7 +6,7 @@ import { api } from "../services";
 const FavoriteContext = createContext({} as FavoritesProviderData);
 
 export const FavoritesProvider = ({ children }: AllProvidersProps): JSX.Element => {
-	const { logged } = useAuth();
+	const { logged, currentUser } = useAuth();
 
 	const [favorites, setFavorites] = useState<ApiFavorites[]>([]);
 
@@ -26,11 +26,53 @@ export const FavoritesProvider = ({ children }: AllProvidersProps): JSX.Element 
 		}
 	};
 
+	const favThis = (id: string, isFav: boolean): void => {
+		if (logged && currentUser) {
+			const token = localStorage.getItem("token");
+			switch (isFav) {
+				case true:
+					const favId = favorites.find(e => e.kindredId === id);
+					if (favId) {
+						const deleteData = {
+							headers: {
+								Authorization: `Bearer ${token}`,
+							},
+							data: {
+								favoriteId: favId.id,
+							},
+						};
+						api.delete(`/favorites`, deleteData).then(res => {
+							if (res.status === 204) {
+								handleGetFavorites();
+							}
+						});
+					}
+					break;
+				case false:
+					const headers = {
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					};
+					const body = {
+						userId: currentUser.user.id,
+						kindredId: id,
+					};
+					api.post(`/favorites`, body, headers).then(res => {
+						if (res.status === 201) {
+							handleGetFavorites();
+						}
+					});
+					break;
+			}
+		}
+	};
+
 	useEffect(() => {
 		if (logged) handleGetFavorites();
-	}, []);
+	}, [logged]);
 
-	return <FavoriteContext.Provider value={{ favorites, handleGetFavorites: handleGetFavorites }}>{children}</FavoriteContext.Provider>;
+	return <FavoriteContext.Provider value={{ favorites, handleGetFavorites, favThis }}>{children}</FavoriteContext.Provider>;
 };
 
 export const useFavorites = (): FavoritesProviderData => useContext(FavoriteContext);
