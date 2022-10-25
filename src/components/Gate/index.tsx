@@ -1,5 +1,5 @@
 import { error, validateEmail, validateName, validatePassword } from "../../utils/validation.tools";
-import { useAuth } from "../../contexts/Account.contexts";
+import { useAuth } from "../../contexts/Account.context";
 import { SubmitButtom, SwicherButtom } from "./styles";
 import { DataType } from "../../types/interfaces";
 import { api } from "../../services";

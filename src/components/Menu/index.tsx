@@ -1,7 +1,7 @@
 import { Bite, Gear, Home, LogOut, VampireProfile } from "../../assets/icons";
 import { MenuContainer, MenuItem, MenuItemButton } from "./styles";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/Account.contexts";
+import { useAuth } from "../../contexts/Account.context";
 import type { MenuProps } from "../../types/interfaces";
 
 const Menu = ({ path }: MenuProps): JSX.Element => {

@@ -1,9 +1,10 @@
 import { Assamite, Brujah, FollowersOfSet, Gangrel, Giovanni, LaSombra, Malkavian, Nosferatu, Ravnos, Toreador, Tremere, Tzimisce, Ventrue } from "../../assets/images/clans";
+import { LoaderProps } from "../../types/interfaces";
 import { KindredRoullete } from "./styles";
 
-const Loader = (): JSX.Element => {
+const Loader = ({ animated }: LoaderProps): JSX.Element => {
 	return (
-		<KindredRoullete>
+		<KindredRoullete animated={animated}>
 			<Brujah />
 			<Gangrel />
 			<Malkavian />

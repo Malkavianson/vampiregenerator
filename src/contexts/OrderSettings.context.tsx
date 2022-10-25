@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { AllProvidersProps } from "../types/interfaces";
 import type { Dispatch, SetStateAction } from "react";
 import { useFavorites } from "./Favorites.context";
-import { useAuth } from "./Account.contexts";
+import { useAuth } from "./Account.context";
 
 interface OrderSettingsProviderData {
 	orderBy: string;
@@ -24,7 +24,7 @@ export const OrderSettingsProvider = ({ children }: AllProvidersProps): JSX.Elem
 	const [orderBy, setOrderBy] = useState("creation");
 	const [orderDirection, setOrderDirection] = useState("desc");
 	const [category, setCategory] = useState("all");
-	const [pageLength, setPageLenght] = useState(10);
+	const [pageLength, setPageLenght] = useState(6);
 
 	useEffect(() => {
 		if (logged) handleGetFavorites();

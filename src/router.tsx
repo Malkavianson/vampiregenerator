@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import { useAuth } from "./contexts/Account.contexts";
+import { useAuth } from "./contexts/Account.context";
 import Generate from "./pages/Generate";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";

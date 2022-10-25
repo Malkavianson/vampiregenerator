@@ -1,5 +1,5 @@
 import { CategorySelector, OrderBySelector, OrderDirectionSelector, PageSelectors } from "./styles";
-import { useOrderSettings } from "../../contexts/OrderSettings.contexts";
+import { useOrderSettings } from "../../contexts/OrderSettings.context";
 
 const OrderNav = (): JSX.Element => {
 	const { setOrderBy, setOrderDirection, setCategory } = useOrderSettings();

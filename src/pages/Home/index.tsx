@@ -1,15 +1,16 @@
-import { Container, ContentContainer, ContentHeader } from "../styles";
-import { HomeContentCards, HomeContentHeaderTitle } from "./styles";
-import { useKindred } from "../../contexts/kindreds.contexts";
+import { useKindred } from "../../contexts/Kindreds.context";
+import { Container, ContentContainer } from "../styles";
+import TitleContent from "src/components/TitleContent";
 import Autoscroll from "../../components/AutoScroll";
 import Kindreds from "../../components/Kindreds";
 import OrderNav from "../../components/OrderNav";
+import Loader from "../../components/Loader";
 import { useEffect, useState } from "react";
-import { Title } from "../../assets/icons";
+import { HomeContentCards } from "./styles";
 import Menu from "../../components/Menu";
 
 const Home = (): JSX.Element => {
-	const { currentPage, setCurrentPage } = useKindred();
+	const { endOfPage, currentPage, setCurrentPage } = useKindred();
 	const [scrollPage, setScrollPage] = useState(false);
 
 	const target = document.querySelector("#autoscrolldiv");
@@ -40,18 +41,14 @@ const Home = (): JSX.Element => {
 		<Container>
 			<Menu path="home" />
 			<ContentContainer>
-				<ContentHeader>
-					<div>
-						<HomeContentHeaderTitle>
-							<Title />
-						</HomeContentHeaderTitle>
-						<h2>Welcome to the domain of Kindreds</h2>
-					</div>
-				</ContentHeader>
+				<TitleContent>
+					<h2>Welcome to the domain of Kindreds</h2>
+				</TitleContent>
 				<OrderNav />
 				<HomeContentCards id="autoscrollArea">
 					<Kindreds />
-					<Autoscroll />;
+					<Autoscroll />
+					<Loader animated={!endOfPage} />
 				</HomeContentCards>
 			</ContentContainer>
 		</Container>

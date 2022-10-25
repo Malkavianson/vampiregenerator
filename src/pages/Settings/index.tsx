@@ -1,11 +1,12 @@
 import { FormContent, SettingsContent, SubmitButtom, ToggleButtom } from "./styles";
 import { validateName, validatePassword } from "../../utils/validation.tools";
-import { Container, ContentContainer, ContentHeader } from "../styles";
-import { useAuth } from "../../contexts/Account.contexts";
+import { useAuth } from "../../contexts/Account.context";
+import TitleContent from "../../components/TitleContent";
+import { Container, ContentContainer } from "../styles";
 import { DataType } from "../../types/interfaces";
 import Input from "../../components/Input";
 import Menu from "../../components/Menu";
-import { api } from "src/services";
+import { api } from "../../services";
 import { useState } from "react";
 
 const Settings = (): JSX.Element => {
@@ -49,12 +50,9 @@ const Settings = (): JSX.Element => {
 		<Container>
 			<Menu path="settings" />
 			<ContentContainer>
-				<ContentHeader>
-					<div>
-						<h1>World of Darkness</h1>
-						<h2>🛠 Settings ⚙️</h2>
-					</div>
-				</ContentHeader>
+				<TitleContent>
+					<h2>🛠 Settings ⚙️</h2>
+				</TitleContent>
 				<SettingsContent>
 					<ToggleButtom
 						onClick={(e): void => {

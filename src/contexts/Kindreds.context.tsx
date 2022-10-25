@@ -1,9 +1,9 @@
 import { AllProvidersProps, KindredProviderData } from "../types/interfaces";
 import { createContext, useContext, useEffect, useState } from "react";
-import { useOrderSettings } from "./OrderSettings.contexts";
+import { useOrderSettings } from "./OrderSettings.context";
 import { useFavorites } from "./Favorites.context";
 import blankKindred from "src/utils/blanKindred";
-import { useAuth } from "./Account.contexts";
+import { useAuth } from "./Account.context";
 import { api } from "../services";
 
 const KindredContext = createContext({} as KindredProviderData);
@@ -13,12 +13,13 @@ export const KindredProvider = ({ children }: AllProvidersProps): JSX.Element =>
 	const { handleGetFavorites } = useFavorites();
 	const { orderBy, orderDirection, category, pageLength } = useOrderSettings();
 
-	const [status, getStatus] = useState(false);
-	const [kindreds, setKindreds] = useState([blankKindred]);
 	const [allKindreds, setAllKindreds] = useState([blankKindred]);
-	const [currentPage, setCurrentPage] = useState(1);
+	const [endOfPage, setEndOfPage] = useState(false);
 	const [kindredsBK, setKindredsBK] = useState([blankKindred]);
+	const [kindreds, setKindreds] = useState([blankKindred]);
 	const [lastValidPage, setLastValidPage] = useState(1);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [status, getStatus] = useState(false);
 
 	const handleGetKindreds = (): void => {
 		if (status && category === "all") {
@@ -32,6 +33,7 @@ export const KindredProvider = ({ children }: AllProvidersProps): JSX.Element =>
 					setKindreds(data);
 					setKindredsBK(data);
 				} else {
+					setEndOfPage(true);
 					setCurrentPage(lastValidPage);
 				}
 			});
@@ -141,7 +143,7 @@ export const KindredProvider = ({ children }: AllProvidersProps): JSX.Element =>
 		handleGetKindreds();
 	}, [status]);
 
-	return <KindredContext.Provider value={{ currentPage, setCurrentPage, status, kindreds, handleGetServerStatus, toggleCategory, toggleOrderBy }}>{children}</KindredContext.Provider>;
+	return <KindredContext.Provider value={{ endOfPage, currentPage, setCurrentPage, status, kindreds, handleGetServerStatus, toggleCategory, toggleOrderBy }}>{children}</KindredContext.Provider>;
 };
 
 export const useKindred = (): KindredProviderData => useContext(KindredContext);

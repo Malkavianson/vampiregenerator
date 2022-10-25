@@ -1,6 +1,6 @@
-import mixings from "src/assets/styles/mixins";
-import { KindredAreaProps } from "src/types/interfaces";
 import styled, { css, FlattenSimpleInterpolation } from "styled-components";
+import { KindredAreaProps } from "../../types/interfaces";
+import mixings from "../../assets/styles/mixins";
 
 export const FaceFramer = styled.div`
 	position: absolute;

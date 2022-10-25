@@ -96,6 +96,7 @@ export interface KindredAreaProps {
 }
 
 export interface KindredProviderData {
+	endOfPage: boolean;
 	status: boolean;
 	kindreds: ApiKindred[];
 	handleGetServerStatus: () => void;
@@ -103,6 +104,10 @@ export interface KindredProviderData {
 	toggleOrderBy: () => void;
 	currentPage: number;
 	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export interface LoaderProps {
+	animated?: boolean;
 }
 
 export interface MenuItemProps {

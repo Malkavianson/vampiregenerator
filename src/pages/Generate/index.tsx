@@ -1,12 +1,18 @@
+import { Container, ContentContainer } from "../styles";
 import GenerateForm from "../../components/GenerateForm";
 import Menu from "../../components/Menu";
-import { Container } from "../styles";
+import TitleContent from "src/components/TitleContent";
 
 const Generate = (): JSX.Element => {
 	return (
 		<Container>
 			<Menu path="generate" />
-			<GenerateForm />
+			<ContentContainer>
+				<TitleContent>
+					<h2>Embrace a new kindred</h2>
+				</TitleContent>
+				<GenerateForm />
+			</ContentContainer>
 		</Container>
 	);
 };

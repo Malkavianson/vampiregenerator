@@ -1,6 +1,6 @@
 import { FaceFramer, KindredArea, KindredHeader, KindredMain, KindredSheet, TypeTable, TypeTBody, TypeTBodyCell, TypeTBodyRow, TypeTHead, TypeTHeadCell, TypeTHeadRow } from "./styles";
 import { useFavorites } from "../../contexts/Favorites.context";
-import { useAuth } from "../../contexts/Account.contexts";
+import { useAuth } from "../../contexts/Account.context";
 import type { PropKindred } from "../../types/interfaces";
 import { Download, StarSvg } from "../../assets/icons";
 import { useEffect, useRef, useState } from "react";
