@@ -48,7 +48,7 @@ const Home = (): JSX.Element => {
 
 	useEffect(() => {
 		handleGetServerStatus();
-	}, [logged]);
+	}, []);
 
 	return (
 		<Container>
