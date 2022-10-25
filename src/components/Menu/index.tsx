@@ -1,4 +1,4 @@
-import { Bite, Gear, Home, LogOut, VampireProfile } from "../../assets/icons";
+import { Bite, Gear, Home, Lock, LogOut, VampireProfile } from "../../assets/icons";
 import { MenuContainer, MenuItem, MenuItemButton } from "./styles";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/Account.context";
@@ -9,6 +9,13 @@ const Menu = ({ path }: MenuProps): JSX.Element => {
 	const navigate: NavigateFunction = useNavigate();
 	return (
 		<MenuContainer>
+			{!logged && (
+				<MenuItem>
+					<MenuItemButton onClick={(): void => navigate("/login")}>
+						<Lock />
+					</MenuItemButton>
+				</MenuItem>
+			)}
 			<nav>
 				<MenuItem active={path === "home"}>
 					<MenuItemButton
@@ -47,16 +54,18 @@ const Menu = ({ path }: MenuProps): JSX.Element => {
 					</>
 				)}
 			</nav>
-			<MenuItem logout>
-				<MenuItemButton
-					onClick={(e): void => {
-						logout();
-						e.stopPropagation();
-					}}
-				>
-					<LogOut />
-				</MenuItemButton>
-			</MenuItem>
+			{logged && (
+				<MenuItem logout>
+					<MenuItemButton
+						onClick={(e): void => {
+							logout();
+							e.stopPropagation();
+						}}
+					>
+						<LogOut />
+					</MenuItemButton>
+				</MenuItem>
+			)}
 		</MenuContainer>
 	);
 };
