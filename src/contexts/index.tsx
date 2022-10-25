@@ -1,6 +1,6 @@
 import { OrderSettingsProvider } from "./OrderSettings.contexts";
 import { FavoritesProvider } from "./Favorites.context";
-import { KindredProvider } from "./kindreds.contexts";
+import { KindredProvider } from "./Kindreds.contexts";
 import { AuthProvider } from "./Account.contexts";
 import { BrowserRouter } from "react-router-dom";
 import { ReactNode } from "react";

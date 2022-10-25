@@ -24,7 +24,7 @@ export const OrderSettingsProvider = ({ children }: AllProvidersProps): JSX.Elem
 	const [orderBy, setOrderBy] = useState("creation");
 	const [orderDirection, setOrderDirection] = useState("desc");
 	const [category, setCategory] = useState("all");
-	const [pageLength, setPageLenght] = useState(10);
+	const [pageLength, setPageLenght] = useState(4);
 
 	useEffect(() => {
 		if (logged) handleGetFavorites();

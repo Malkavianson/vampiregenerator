@@ -1,5 +1,5 @@
 import { useOrderSettings } from "../../contexts/OrderSettings.contexts";
-import { useKindred } from "../../contexts/kindreds.contexts";
+import { useKindred } from "../../contexts/Kindreds.contexts";
 import { KindredsPool, LoadingTitle } from "./styles";
 import { useEffect } from "react";
 import Kindred from "../Kindred";
